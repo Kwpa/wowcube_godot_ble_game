@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://ccxuw8qubuhk1" path="res://Scenes/enemy_1.tscn" id="4_dyu4a"]
 [ext_resource type="Script" uid="uid://c27lht6f6nnnp" path="res://Scripts/example_script.gd" id="6_5aejl"]
 
-[sub_resource type="Environment" id="Environment_wb7ei"]
-background_mode = 1
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
@@ -16,6 +13,23 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="PlaneMesh" id="PlaneMesh_5aejl"]
 material = SubResource("StandardMaterial3D_p8frc")
 size = Vector2(100, 100)
+
+[sub_resource type="Environment" id="Environment_wb7ei"]
+background_mode = 1
+fog_mode = 1
+fog_light_color = Color(0, 0, 0, 1)
+fog_light_energy = 4.58
+fog_sun_scatter = 0.61
+fog_density = 0.6393
+fog_height = 1024.0
+fog_depth_begin = 0.0
+volumetric_fog_density = 0.6433
+volumetric_fog_albedo = Color(0, 0, 0, 1)
+volumetric_fog_emission_energy = 0.0
+volumetric_fog_length = 4.0
+volumetric_fog_detail_spread = 1.35188
+adjustment_brightness = 7.2
+adjustment_saturation = 0.01
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_16uyv")
@@ -25,17 +39,17 @@ metadata/movie_file = "res://movie1.mp4"
 [node name="Player" parent="." instance=ExtResource("1_a7fmb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_wb7ei")
+[node name="EnvAssets" type="Node3D" parent="."]
 
-[node name="EnvAssets" type="Node3D" parent="WorldEnvironment"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="WorldEnvironment/EnvAssets"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EnvAssets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.01, 0)
 mesh = SubResource("PlaneMesh_5aejl")
 
-[node name="enemy_1" parent="WorldEnvironment" instance=ExtResource("4_dyu4a")]
+[node name="enemy_1" parent="." instance=ExtResource("4_dyu4a")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.00375414, 0.0911694, -1.54557)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_wb7ei")
 
 [node name="input_from_cube" type="Node3D" parent="."]
 script = ExtResource("6_5aejl")
