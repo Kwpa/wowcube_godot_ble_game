@@ -1,17 +1,203 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu7y4nwsyidl6"]
+[gd_scene load_steps=15 format=3 uid="uid://bu7y4nwsyidl6"]
 
 [ext_resource type="PackedScene" uid="uid://7fqv8k5bo47u" path="res://Game/cell/cell_spotlight.tscn" id="1_tte3b"]
+[ext_resource type="Texture2D" uid="uid://dy56vtvomfybv" path="res://katie_work/plants/tree_1.png" id="2_abxiw"]
+[ext_resource type="Texture2D" uid="uid://tyowpqokciaf" path="res://katie_work/rocks/ROCK_1_SMALL.png" id="3_73aup"]
+[ext_resource type="Script" uid="uid://b6j7icktsao38" path="res://Scripts/randomise_sprite.gd" id="4_a46ld"]
+[ext_resource type="Texture2D" uid="uid://bgdanq8cu6psu" path="res://katie_work/plants/leaf_blue_1.png" id="5_xats5"]
+
+[sub_resource type="Curve" id="Curve_x8of8"]
+_data = [Vector2(0, 0.98377), 0.0, -4.37438, 0, 1, Vector2(0.21519, 0.042447), 0.0, 0.0, 0, 0, Vector2(1, 0.00187266), -0.0516995, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_byfcn"]
+curve = SubResource("Curve_x8of8")
+
+[sub_resource type="Curve" id="Curve_xats5"]
+_data = [Vector2(0, 1), 0.0, -3.59627, 0, 1, Vector2(0.259494, 0.0667915), -1.17656, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x8of8"]
+curve = SubResource("Curve_xats5")
+
+[sub_resource type="Curve" id="Curve_a46ld"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.270012), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6rh6p"]
+curve = SubResource("Curve_a46ld")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_a46ld"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 0.1, 1)
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+angular_velocity_min = 8.80998
+angular_velocity_max = 92.66
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = -2.23517e-05
+gravity = Vector3(0, -0.1, 0)
+scale_min = 0.2
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_x8of8")
+alpha_curve = SubResource("CurveTexture_byfcn")
+turbulence_enabled = true
+turbulence_noise_strength = 0.1
+turbulence_noise_scale = 1.203
+turbulence_noise_speed = Vector3(0, -1, 0)
+turbulence_noise_speed_random = 0.1
+turbulence_influence_min = 0.034
+turbulence_influence_max = 0.034
+turbulence_influence_over_life = SubResource("CurveTexture_6rh6p")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8of8"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("5_xats5")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_byfcn"]
+material = SubResource("StandardMaterial3D_x8of8")
+size = Vector2(0.05, 0.05)
 
 [node name="cell_spotlight_01" instance=ExtResource("1_tte3b")]
+
+[node name="West" parent="." index="1"]
+visible = true
+layers = 0
+
+[node name="Sprite3D10" type="Sprite3D" parent="West" index="1"]
+transform = Transform3D(0.05, 0, 0, 0, 0.103747, 0, 0, 0, 0.05, -0.126426, -0.496406, -0.0252233)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+
+[node name="East" parent="." index="2"]
+visible = true
+layers = 0
+
+[node name="Sprite3D12" type="Sprite3D" parent="East" index="1"]
+transform = Transform3D(-0.05, 0, 4.37114e-09, 0, 0.103747, 0, -4.37114e-09, 0, -0.05, -0.127, -0.499758, -0.148)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+
+[node name="North" parent="." index="3"]
+visible = true
+layers = 0
+
+[node name="Sprite3D13" type="Sprite3D" parent="North" index="1"]
+transform = Transform3D(-2.18557e-09, 0, 0.05, 0, 0.103747, 0, -0.05, 0, -2.18557e-09, -0.139045, -0.500085, -0.0403671)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+
+[node name="South" parent="." index="5"]
+visible = true
+layers = 0
+
+[node name="Sprite3D11" type="Sprite3D" parent="South" index="1"]
+transform = Transform3D(-2.18557e-09, 0, -0.05, 0, 0.103747, 0, 0.05, 0, -2.18557e-09, -0.121, -0.500517, -0.058)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
 
 [node name="Sprite3D" parent="." index="6"]
 modulate = Color(0.982525, 0.284277, 0.434811, 1)
 
-[node name="Sprite3D2" parent="." index="7"]
-modulate = Color(1, 0, 0, 1)
+[node name="Sprite3D2" parent="." index="8"]
+visible = false
 
-[node name="Sprite3D3" parent="." index="8"]
-modulate = Color(1, 0, 0, 1)
+[node name="Sprite3D9" type="Sprite3D" parent="." index="9"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372, -1.49012e-08, -0.286)
+sorting_use_aabb_center = false
+offset = Vector2(0, 200)
+billboard = 2
+texture = ExtResource("3_73aup")
+script = ExtResource("4_a46ld")
+chance_over = 1
+chance = 10
 
-[node name="Sprite3D4" parent="." index="9"]
-modulate = Color(1, 0, 0, 1)
+[node name="Sprite3D3" parent="." index="10"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372105, 0.0866082, -0.286269)
+visible = false
+
+[node name="Sprite3D6" type="Sprite3D" parent="." index="11"]
+transform = Transform3D(0.05, 0, 0, 0, 0.103747, 0, 0, 0, 0.05, -0.391, -0.0026837, -0.412)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+script = ExtResource("4_a46ld")
+chance_over = 1
+chance = 5
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D6" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D6" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14802, 2.8871e-07, 3.24746)
+
+[node name="Sprite3D7" type="Sprite3D" parent="." index="12"]
+transform = Transform3D(0.05, 0, 0, 0, 0.0636751, 0, 0, 0, 0.05, 0.386, 0, -0.148)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+script = ExtResource("4_a46ld")
+chance_over = 1
+chance = 5
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D7" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D7" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34818, 0, -4.02074)
+
+[node name="Sprite3D8" type="Sprite3D" parent="." index="13"]
+transform = Transform3D(0.0617512, 0, 0, 0, 0.0636751, 0, 0, 0, 0.05, -0.327, 0, 0.431)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+script = ExtResource("4_a46ld")
+chance_over = 1
+chance = 5
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D8" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D8" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33561, 0, 0.379115)
+
+[node name="Sprite3D10" type="Sprite3D" parent="." index="14"]
+transform = Transform3D(0.05, 0, 0, 0, 0.0971331, 0, 0, 0, 0.05, 0.252, 0, 0.424)
+sorting_use_aabb_center = false
+offset = Vector2(0, 1388)
+billboard = 2
+texture = ExtResource("2_abxiw")
+script = ExtResource("4_a46ld")
+chance_over = 1
+chance = 5
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D10" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D10" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47236, 0)
+amount = 2
+lifetime = 12.0
+preprocess = 2.92
+randomness = 0.74
+process_material = SubResource("ParticleProcessMaterial_a46ld")
+draw_pass_1 = SubResource("QuadMesh_byfcn")
+
+[node name="Sprite3D4" parent="." index="16"]
+visible = false

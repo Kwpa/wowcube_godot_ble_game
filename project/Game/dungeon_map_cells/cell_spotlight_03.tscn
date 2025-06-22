@@ -1,18 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctijh2lgwrxlm"]
+[gd_scene load_steps=4 format=3 uid="uid://ctijh2lgwrxlm"]
 
 [ext_resource type="PackedScene" uid="uid://7fqv8k5bo47u" path="res://Game/cell/cell_spotlight.tscn" id="1_pa6qa"]
+[ext_resource type="Script" uid="uid://b6j7icktsao38" path="res://Scripts/randomise_sprite.gd" id="2_ri720"]
+[ext_resource type="Texture2D" uid="uid://vu1hxwlpspj4" path="res://katie_work/plants/flower_1.png" id="3_yoh5y"]
 
 [node name="cell_spotlight_03" instance=ExtResource("1_pa6qa")]
 
 [node name="Sprite3D" parent="." index="6"]
 modulate = Color(0, 0.777473, 0.297911, 1)
 
-[node name="Sprite3D2" parent="." index="7"]
+[node name="Sprite3D2" parent="." index="8"]
 visible = false
 modulate = Color(0, 0.777473, 0.297911, 1)
 
-[node name="Sprite3D3" parent="." index="8"]
+[node name="Sprite3D3" parent="." index="9"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.331095, 0.00048577, -0.550842)
+sorting_offset = 0.0
+sorting_use_aabb_center = false
+offset = Vector2(0, 170)
 modulate = Color(0, 0.777473, 0.297911, 1)
+script = ExtResource("2_ri720")
+chance_over = 1
+chance = 5
 
-[node name="Sprite3D4" parent="." index="9"]
+[node name="spawn_location_1" type="Node3D" parent="Sprite3D3" index="0"]
+
+[node name="spawn_location_2" type="Node3D" parent="Sprite3D3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8334, -1.37228, 2.76334)
+
+[node name="Sprite3D4" parent="." index="10"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.457954, -0.000394136, 0.283878)
+sorting_offset = 0.0
+sorting_use_aabb_center = false
+offset = Vector2(0, 580)
 modulate = Color(0, 0.777473, 0.297911, 1)
+script = ExtResource("2_ri720")
+chance_over = 1
+chance = 5
+
+[node name="spawn_location_1" type="Node3D" parent="Sprite3D4" index="0"]
+
+[node name="spawn_location_2" type="Node3D" parent="Sprite3D4" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9412, 0, 0)
+
+[node name="Sprite3D5" type="Sprite3D" parent="." index="11"]
+transform = Transform3D(0.041501, 0, 0, 0, 0.041501, 0, 0, 0, 0.041501, -0.0498499, -0.000394136, -0.0751494)
+sorting_use_aabb_center = false
+offset = Vector2(0, 230)
+modulate = Color(0.78, 0.78, 0.78, 1)
+billboard = 2
+texture = ExtResource("3_yoh5y")
+script = ExtResource("2_ri720")
+chance_over = 1
+chance = 8
+
+[node name="spawn_location_1" type="Node3D" parent="Sprite3D5" index="0"]
+
+[node name="spawn_location_2" type="Node3D" parent="Sprite3D5" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.51717, 0, -7.13593)
