@@ -3,14 +3,18 @@ extends Node3D
 
 @export var chance_over : int = 2
 @export var chance : int = 3 
-
+@export var spawn_locations : Array[Node]
+@export var sprites : Array[Node3D]
 
 func _ready():
 	var rand = randi() % chance 
 	visible = rand <= chance_over
 	
-	if get_child_count() != 0:
-		var rand_index = randi() % get_children().size()
-		self.global_position = get_children()[rand_index].global_position
+	if spawn_locations.size() != 0:
+		var rand_index = randi() % spawn_locations.size()
+		for sprite in sprites:
+			sprite.global_position = spawn_locations[rand_index].global_position
 	
-	self.flip_h = randi() % 4 < 1 
+	var rand_bool = randi() % 4 < 1
+	for sprite in sprites:
+		sprite.flip_h = rand_bool

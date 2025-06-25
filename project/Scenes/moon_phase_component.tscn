@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjqgedx425woe"]
+
+[ext_resource type="Script" uid="uid://bgiw6yjxtl3mx" path="res://Scripts/Components/moon_phase_component.gd" id="1_g2spd"]
+
+[node name="moon_phase_component" type="Node3D"]
+script = ExtResource("1_g2spd")

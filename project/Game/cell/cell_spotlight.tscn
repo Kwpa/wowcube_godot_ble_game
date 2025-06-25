@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://7fqv8k5bo47u"]
+[gd_scene load_steps=17 format=3 uid="uid://7fqv8k5bo47u"]
 
 [ext_resource type="Script" uid="uid://cykl8dsfj3kyf" path="res://Game/cell/cell.gd" id="1_tr5d5"]
 [ext_resource type="Material" uid="uid://drxu88g34gafy" path="res://Game/cell/cell.tres" id="2_l4xv5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c2ti4v80n1s06" path="res://katie_work/rocks/ROCK_2_MED.png" id="4_twloj"]
 [ext_resource type="Texture2D" uid="uid://tyowpqokciaf" path="res://katie_work/rocks/ROCK_1_SMALL.png" id="5_kgrah"]
 [ext_resource type="Texture2D" uid="uid://crr57jh0vhk3h" path="res://katie_work/rocks/ROCK_3_LARGE.png" id="6_41kyx"]
+[ext_resource type="PackedScene" uid="uid://bjqgedx425woe" path="res://Scenes/moon_phase_component.tscn" id="7_kgrah"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0uc8s"]
 size = Vector2(1, 1)
@@ -130,3 +131,5 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.457954, 0.28969, 
 sorting_offset = 10.0
 billboard = 2
 texture = ExtResource("6_41kyx")
+
+[node name="moon_phase_component" parent="." instance=ExtResource("7_kgrah")]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctijh2lgwrxlm"]
+[gd_scene load_steps=5 format=3 uid="uid://ctijh2lgwrxlm"]
 
 [ext_resource type="PackedScene" uid="uid://7fqv8k5bo47u" path="res://Game/cell/cell_spotlight.tscn" id="1_pa6qa"]
 [ext_resource type="Script" uid="uid://b6j7icktsao38" path="res://Scripts/randomise_sprite.gd" id="2_ri720"]
 [ext_resource type="Texture2D" uid="uid://vu1hxwlpspj4" path="res://katie_work/plants/flower_1.png" id="3_yoh5y"]
+[ext_resource type="Texture2D" uid="uid://blbnnsoe2cx36" path="res://katie_work/evil_flowers/Flower2.png" id="4_tfpfh"]
 
 [node name="cell_spotlight_03" instance=ExtResource("1_pa6qa")]
 
@@ -13,7 +14,7 @@ modulate = Color(0, 0.777473, 0.297911, 1)
 visible = false
 modulate = Color(0, 0.777473, 0.297911, 1)
 
-[node name="Sprite3D3" parent="." index="9"]
+[node name="Sprite3D3" parent="." index="9" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.331095, 0.00048577, -0.550842)
 sorting_offset = 0.0
 sorting_use_aabb_center = false
@@ -22,13 +23,15 @@ modulate = Color(0.78, 0.78, 0.78, 1)
 script = ExtResource("2_ri720")
 chance_over = 1
 chance = 5
+spawn_locations = [NodePath("spawn_location_1"), NodePath("spawn_location_2")]
+sprites = [NodePath(".")]
 
 [node name="spawn_location_1" type="Node3D" parent="Sprite3D3" index="0"]
 
 [node name="spawn_location_2" type="Node3D" parent="Sprite3D3" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8334, -1.37228, 2.76334)
 
-[node name="Sprite3D4" parent="." index="10"]
+[node name="Sprite3D4" parent="." index="10" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.457954, -0.000394136, 0.283878)
 sorting_offset = 0.0
 sorting_use_aabb_center = false
@@ -37,24 +40,45 @@ modulate = Color(0.78, 0.78, 0.78, 1)
 script = ExtResource("2_ri720")
 chance_over = 1
 chance = 5
+spawn_locations = [NodePath("spawn_location_1"), NodePath("spawn_location_2")]
+sprites = [NodePath(".")]
 
 [node name="spawn_location_1" type="Node3D" parent="Sprite3D4" index="0"]
 
 [node name="spawn_location_2" type="Node3D" parent="Sprite3D4" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9412, 0, 0)
 
-[node name="Sprite3D5" type="Sprite3D" parent="." index="11"]
+[node name="moon_phase_component" parent="." index="11" node_paths=PackedStringArray("new_moon_phase_list", "full_moon_phase_list")]
+visible = false
+new_moon_phase_list = [NodePath("../Flower/Sprite3D5")]
+full_moon_phase_list = [NodePath("../Flower/Sprite3D6-f")]
+
+[node name="Flower" type="Node3D" parent="." index="12" node_paths=PackedStringArray("spawn_locations", "sprites")]
+script = ExtResource("2_ri720")
+chance_over = 1
+chance = 8
+spawn_locations = [NodePath("spawn_location_1"), NodePath("spawn_location_2")]
+sprites = [NodePath("Sprite3D6-f"), NodePath("Sprite3D5")]
+
+[node name="Sprite3D6-f" type="Sprite3D" parent="Flower" index="0"]
+transform = Transform3D(0.0259949, 0, 0, 0, 0.0259949, 0, 0, 0, 0.0259949, -0.0027916, -0.000394136, -0.0751494)
+visible = false
+sorting_use_aabb_center = false
+offset = Vector2(0, 1125)
+modulate = Color(0.78, 0.78, 0.78, 1)
+billboard = 2
+texture = ExtResource("4_tfpfh")
+
+[node name="Sprite3D5" type="Sprite3D" parent="Flower" index="1"]
 transform = Transform3D(0.041501, 0, 0, 0, 0.041501, 0, 0, 0, 0.041501, -0.0498499, -0.000394136, -0.0751494)
 sorting_use_aabb_center = false
 offset = Vector2(0, 230)
 modulate = Color(0.78, 0.78, 0.78, 1)
 billboard = 2
 texture = ExtResource("3_yoh5y")
-script = ExtResource("2_ri720")
-chance_over = 1
-chance = 8
 
-[node name="spawn_location_1" type="Node3D" parent="Sprite3D5" index="0"]
+[node name="spawn_location_1" type="Node3D" parent="Flower" index="2"]
+transform = Transform3D(0.0259949, 0, 0, 0, 0.0259949, 0, 0, 0, 0.0259949, -0.0027916, -0.000394136, -0.0751494)
 
-[node name="spawn_location_2" type="Node3D" parent="Sprite3D5" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.51717, 0, -7.13593)
+[node name="spawn_location_2" type="Node3D" parent="Flower" index="3"]
+transform = Transform3D(0.0259949, 0, 0, 0, 0.0259949, 0, 0, 0, 0.0259949, -0.40534, -0.000394136, -0.399359)

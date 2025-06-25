@@ -36,13 +36,17 @@ func _input(event):
 	if is_moving:
 		return
 	if event.is_action_pressed("ui_up"):
-		move()
+		Events.emit_signal("twist", 1,0) #move()
 	if event.is_action_pressed("ui_left"):
-		rotate_and_set_direction(90)
+		Events.emit_signal("twist", 1,1) #rotate_and_set_direction(90)
 	if event.is_action_pressed("ui_right"):
-		rotate_and_set_direction(-90)
+		Events.emit_signal("twist", 2,1)
 	if event.is_action_pressed("ui_down"):
-		rotate_and_set_direction(180)
+		pass #rotate_and_set_direction(180)
+	if event.is_action_pressed("Q"):
+		Events.emit_signal("twist", 1,2)
+	if event.is_action_pressed("E"):
+		Events.emit_signal("twist", 2,2)
 
 
 func twist_input(scr : int, dir : int):

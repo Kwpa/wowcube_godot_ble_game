@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=14 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
 [ext_resource type="PackedScene" uid="uid://b7yc03naufag0" path="res://Game/Map/map.tscn" id="2_prens"]
 [ext_resource type="PackedScene" uid="uid://ccxuw8qubuhk1" path="res://Scenes/enemy_1.tscn" id="4_dyu4a"]
 [ext_resource type="Script" uid="uid://c27lht6f6nnnp" path="res://Scripts/example_script.gd" id="6_5aejl"]
+[ext_resource type="PackedScene" uid="uid://bjqgedx425woe" path="res://Scenes/moon_phase_component.tscn" id="6_wb7ei"]
+[ext_resource type="Texture2D" uid="uid://dgvklgjt2y2ef" path="res://Textures/hand.png" id="7_w5src"]
+[ext_resource type="Shader" uid="uid://bi02mjwf21y3w" path="res://Shaders/invert.gdshader" id="7_wb7ei"]
+[ext_resource type="Script" uid="uid://bhdvjnt5fk4kj" path="res://Scripts/gentle_bob.gd" id="8_uyedj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
@@ -28,8 +32,11 @@ volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_emission_energy = 0.0
 volumetric_fog_length = 4.0
 volumetric_fog_detail_spread = 1.35188
-adjustment_brightness = 7.2
+adjustment_brightness = 7.68
 adjustment_saturation = 0.01
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w5src"]
+shader = ExtResource("7_wb7ei")
 
 [node name="World" type="Node3D"]
 script = ExtResource("1_16uyv")
@@ -53,3 +60,35 @@ environment = SubResource("Environment_wb7ei")
 
 [node name="input_from_cube" type="Node3D" parent="."]
 script = ExtResource("6_5aejl")
+
+[node name="moon_phase_component" parent="." node_paths=PackedStringArray("full_moon_phase_list") instance=ExtResource("6_wb7ei")]
+full_moon_phase_list = [NodePath("../Control")]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = 164.0
+offset_top = 406.0
+offset_right = 401.0
+offset_bottom = 807.0
+texture = ExtResource("7_w5src")
+expand_mode = 1
+script = ExtResource("8_uyedj")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = 696.0
+offset_top = 406.0
+offset_right = 933.0
+offset_bottom = 807.0
+texture = ExtResource("7_w5src")
+expand_mode = 1
+flip_h = true
+script = ExtResource("8_uyedj")
+
+[node name="Control" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_w5src")
+offset_right = 1156.0
+offset_bottom = 656.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="sound" type="Node" parent="."]
