@@ -42,6 +42,8 @@ data = PackedVector3Array(0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.
 [node name="cell_spotlight" type="Node3D"]
 script = ExtResource("1_tr5d5")
 
+[node name="moon_phase_component" parent="." instance=ExtResource("7_kgrah")]
+
 [node name="Bottom" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("PlaneMesh_0uc8s")
@@ -131,5 +133,3 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.457954, 0.28969, 
 sorting_offset = 10.0
 billboard = 2
 texture = ExtResource("6_41kyx")
-
-[node name="moon_phase_component" parent="." instance=ExtResource("7_kgrah")]

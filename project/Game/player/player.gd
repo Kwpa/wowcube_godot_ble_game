@@ -6,6 +6,10 @@ extends CharacterBody3D
 @onready var forward: = $Ray_front
 @onready var camera = $Camera3D
 
+@export var slide_curve : Curve
+@export var warp_strength : float = 0.1
+
+
 var is_rotating := false
 var is_moving := false
 
@@ -89,7 +93,17 @@ func twist_input(scr : int, dir : int):
 func tap_input(count : int):
 	if count == 1 or count == 2:
 		Events.emit_signal("shake_tile_elements", current_tile.tile_id, direction)
+		warp_camera()
 	
+func warp_camera():
+	var camera : Camera3D = get_child(0)
+	var ori_fov = camera.fov
+	var tween := create_tween()
+	tween.set_trans(Tween.TransitionType.TRANS_QUINT)
+	tween.tween_method(
+		func (progress):
+		var curve_progress := slide_curve.sample(progress)
+		camera.fov = ori_fov+warp_strength*curve_progress, 0.0, 1.0,2)
 
 
 func rotate_and_set_direction(angle_delta: float):

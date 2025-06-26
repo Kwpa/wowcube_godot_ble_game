@@ -1,9 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0ekxxogjmxvh"]
+[gd_scene load_steps=3 format=3 uid="uid://b0ekxxogjmxvh"]
 
 [ext_resource type="Script" uid="uid://dtt84d84mgcn7" path="res://Game/player/player.gd" id="1_3780m"]
 
+[sub_resource type="Curve" id="Curve_50lqk"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 1, Vector2(1e-05, 0), 0.0, 0.0, 0, 0, Vector2(0.138504, 1), 0.0, 0.0, 0, 0, Vector2(0.520776, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.08671, 0.0, 1, 0]
+point_count = 5
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_3780m")
+slide_curve = SubResource("Curve_50lqk")
+warp_strength = 25.0
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.279261)

@@ -67,7 +67,10 @@ size = Vector2(0.05, 0.05)
 
 [node name="cell_spotlight_01" instance=ExtResource("1_tte3b")]
 
-[node name="West" parent="." index="1"]
+[node name="shake_component" parent="." index="0" node_paths=PackedStringArray("all_shaking_elements") instance=ExtResource("6_xats5")]
+all_shaking_elements = [NodePath("../West/Sprite3D10"), NodePath("../East/Sprite3D12"), NodePath("../North/Sprite3D13"), NodePath("../South/Sprite3D11"), NodePath("../Sprite3D9"), NodePath("../Sprite3D6"), NodePath("../Sprite3D7"), NodePath("../Sprite3D8"), NodePath("../Sprite3D10")]
+
+[node name="West" parent="." index="3"]
 visible = true
 layers = 0
 
@@ -78,7 +81,7 @@ offset = Vector2(0, 1388)
 billboard = 2
 texture = ExtResource("2_abxiw")
 
-[node name="East" parent="." index="2"]
+[node name="East" parent="." index="4"]
 visible = true
 layers = 0
 
@@ -89,7 +92,7 @@ offset = Vector2(0, 1388)
 billboard = 2
 texture = ExtResource("2_abxiw")
 
-[node name="North" parent="." index="3"]
+[node name="North" parent="." index="5"]
 visible = true
 layers = 0
 
@@ -100,7 +103,7 @@ offset = Vector2(0, 1388)
 billboard = 2
 texture = ExtResource("2_abxiw")
 
-[node name="South" parent="." index="5"]
+[node name="South" parent="." index="7"]
 visible = true
 layers = 0
 
@@ -111,13 +114,10 @@ offset = Vector2(0, 1388)
 billboard = 2
 texture = ExtResource("2_abxiw")
 
-[node name="Sprite3D" parent="." index="6"]
+[node name="Sprite3D" parent="." index="8"]
 modulate = Color(0.982525, 0.284277, 0.434811, 1)
 
-[node name="Sprite3D2" parent="." index="8"]
-visible = false
-
-[node name="Sprite3D9" type="Sprite3D" parent="." index="9" node_paths=PackedStringArray("sprites")]
+[node name="Sprite3D9" type="Sprite3D" parent="." index="10" node_paths=PackedStringArray("sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372, -1.49012e-08, -0.286)
 sorting_use_aabb_center = false
 offset = Vector2(0, 200)
@@ -128,11 +128,10 @@ chance_over = 1
 chance = 10
 sprites = [NodePath(".")]
 
-[node name="Sprite3D3" parent="." index="10"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372105, 0.0866082, -0.286269)
+[node name="Sprite3D2" parent="." index="11"]
 visible = false
 
-[node name="Sprite3D6" type="Sprite3D" parent="." index="11" node_paths=PackedStringArray("spawn_locations", "sprites")]
+[node name="Sprite3D6" type="Sprite3D" parent="." index="12" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.103747, 0, 0, 0, 0.05, -0.391, -0.0026837, -0.412)
 sorting_use_aabb_center = false
 offset = Vector2(0, 1388)
@@ -149,7 +148,7 @@ sprites = [NodePath(".")]
 [node name="spawn_position_2" type="Node3D" parent="Sprite3D6" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14802, 2.8871e-07, 3.24746)
 
-[node name="Sprite3D7" type="Sprite3D" parent="." index="12" node_paths=PackedStringArray("spawn_locations", "sprites")]
+[node name="Sprite3D7" type="Sprite3D" parent="." index="13" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.0636751, 0, 0, 0, 0.05, 0.386, 0, -0.148)
 sorting_use_aabb_center = false
 offset = Vector2(0, 1388)
@@ -166,7 +165,7 @@ sprites = [NodePath(".")]
 [node name="spawn_position_2" type="Node3D" parent="Sprite3D7" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34818, 0, -4.02074)
 
-[node name="Sprite3D8" type="Sprite3D" parent="." index="13" node_paths=PackedStringArray("spawn_locations", "sprites")]
+[node name="Sprite3D8" type="Sprite3D" parent="." index="14" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.0617512, 0, 0, 0, 0.0636751, 0, 0, 0, 0.05, -0.327, 0, 0.431)
 sorting_use_aabb_center = false
 offset = Vector2(0, 1388)
@@ -183,7 +182,7 @@ sprites = [NodePath(".")]
 [node name="spawn_position_2" type="Node3D" parent="Sprite3D8" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.33561, 0, 0.379115)
 
-[node name="Sprite3D10" type="Sprite3D" parent="." index="14" node_paths=PackedStringArray("spawn_locations", "sprites")]
+[node name="Sprite3D10" type="Sprite3D" parent="." index="15" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.05, 0, 0, 0, 0.0971331, 0, 0, 0, 0.05, 0.252, 0, 0.424)
 sorting_use_aabb_center = false
 offset = Vector2(0, 1388)
@@ -200,7 +199,7 @@ sprites = [NodePath(".")]
 [node name="spawn_position_2" type="Node3D" parent="Sprite3D10" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="15"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." index="16"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.47236, 0)
 amount = 2
 lifetime = 12.0
@@ -209,8 +208,10 @@ randomness = 0.74
 process_material = SubResource("ParticleProcessMaterial_a46ld")
 draw_pass_1 = SubResource("QuadMesh_byfcn")
 
-[node name="Sprite3D4" parent="." index="16"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
+[node name="Sprite3D3" parent="." index="17"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372105, 0.0866082, -0.286269)
 visible = false
 
-[node name="shake_component" parent="." index="18" instance=ExtResource("6_xats5")]
+[node name="Sprite3D4" parent="." index="18"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
+visible = false

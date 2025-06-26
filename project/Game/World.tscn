@@ -96,8 +96,10 @@ size_flags_vertical = 3
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 1.39244, 0.28969, 0.283878)
+visible = false
 sorting_offset = 10.0
 texture = ExtResource("10_cfe18")
 
 [node name="moon_phase_component2" parent="." node_paths=PackedStringArray("new_moon_phase_list") instance=ExtResource("6_wb7ei")]
+visible = false
 new_moon_phase_list = [NodePath("../Sprite3D4")]
