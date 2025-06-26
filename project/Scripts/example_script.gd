@@ -19,6 +19,9 @@ func on_device_detected(device:WOWDevice):
 func on_message_received(device: WOWDevice, message_type: int, data: PackedByteArray):
 	print("Message received from: %s Type: %d Data %s" % [device, message_type, data])
 	call_deferred("emit",data) 
-	
+
 func emit(data):
-	Events.emit_signal("twist", int(data[2]), int(data[3]))
+	if int(data[0]) == 161:
+		Events.emit_signal("twist", int(data[2]), int(data[3]))
+	elif int(data[0]) == 241:
+		Events.emit_signal("tap", int(data[2]))

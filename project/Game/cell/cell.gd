@@ -10,6 +10,7 @@ extends Node3D
 
 
 var map_collection_type : Global.MAP_COLLECTION
+var tile_id = [0,0]
 
 func update_faces(cell_list) -> void:
 	var my_grid_position = Vector2i(global_transform.origin.x / Global.GRID_SIZE, global_transform.origin.z / 1)
@@ -23,3 +24,6 @@ func update_faces(cell_list) -> void:
 		southFace.queue_free()
 	if cell_list.has(my_grid_position+Vector2i.UP):
 		northFace.queue_free()
+
+func init_tile_id(array):
+	tile_id = array

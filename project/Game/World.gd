@@ -8,8 +8,7 @@ const Cell4 = preload("res://Game/dungeon_map_cells/cell_spotlight_04.tscn")
 
 @export var Map: PackedScene
 
-var cells = []
-
+var cells : Dictionary
 
 func _ready():
 	print("here!")
@@ -34,8 +33,12 @@ func _ready():
 	make_cells(used_tiles_3,Cell3)
 	make_cells(used_tiles_4,Cell4)
 	
-	for cell in cells:
+
+	for cell in cells.values():
 		cell.update_faces(used_tiles)
+
+
+
 
 
 func make_cells(tiles, instantiated_cell):
@@ -44,5 +47,7 @@ func make_cells(tiles, instantiated_cell):
 		var cell = instantiated_cell.instantiate()
 		add_child(cell)
 		cell.owner = get_tree().edited_scene_root
-		cells.append(cell)
+		var key = [tile.x, tile.y]
+		cell.init_tile_id(key)
+		cells[key] = cell
 		cell.global_transform.origin = Vector3(tile.x*Global.GRID_SIZE, 0, tile.y*Global.GRID_SIZE)

@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu7y4nwsyidl6"]
+[gd_scene load_steps=16 format=3 uid="uid://bu7y4nwsyidl6"]
 
 [ext_resource type="PackedScene" uid="uid://7fqv8k5bo47u" path="res://Game/cell/cell_spotlight.tscn" id="1_tte3b"]
 [ext_resource type="Texture2D" uid="uid://dy56vtvomfybv" path="res://katie_work/plants/tree_1.png" id="2_abxiw"]
 [ext_resource type="Texture2D" uid="uid://tyowpqokciaf" path="res://katie_work/rocks/ROCK_1_SMALL.png" id="3_73aup"]
 [ext_resource type="Script" uid="uid://b6j7icktsao38" path="res://Scripts/randomise_sprite.gd" id="4_a46ld"]
 [ext_resource type="Texture2D" uid="uid://bgdanq8cu6psu" path="res://katie_work/plants/leaf_blue_1.png" id="5_xats5"]
+[ext_resource type="PackedScene" uid="uid://bsi5lpmubgpua" path="res://Scenes/shake_component.tscn" id="6_xats5"]
 
 [sub_resource type="Curve" id="Curve_x8of8"]
 _data = [Vector2(0, 0.98377), 0.0, -4.37438, 0, 1, Vector2(0.21519, 0.042447), 0.0, 0.0, 0, 0, Vector2(1, 0.00187266), -0.0516995, 0.0, 1, 0]
@@ -209,4 +210,7 @@ process_material = SubResource("ParticleProcessMaterial_a46ld")
 draw_pass_1 = SubResource("QuadMesh_byfcn")
 
 [node name="Sprite3D4" parent="." index="16"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
 visible = false
+
+[node name="shake_component" parent="." index="18" instance=ExtResource("6_xats5")]

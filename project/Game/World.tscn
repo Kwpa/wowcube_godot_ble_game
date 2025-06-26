@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=15 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dgvklgjt2y2ef" path="res://Textures/hand.png" id="7_w5src"]
 [ext_resource type="Shader" uid="uid://bi02mjwf21y3w" path="res://Shaders/invert.gdshader" id="7_wb7ei"]
 [ext_resource type="Script" uid="uid://bhdvjnt5fk4kj" path="res://Scripts/gentle_bob.gd" id="8_uyedj"]
+[ext_resource type="Texture2D" uid="uid://ch02ll3ii1wtq" path="res://Textures/Screenshot 2025-06-26 160227.png" id="10_cfe18"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
@@ -92,3 +93,11 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="sound" type="Node" parent="."]
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 1.39244, 0.28969, 0.283878)
+sorting_offset = 10.0
+texture = ExtResource("10_cfe18")
+
+[node name="moon_phase_component2" parent="." node_paths=PackedStringArray("new_moon_phase_list") instance=ExtResource("6_wb7ei")]
+new_moon_phase_list = [NodePath("../Sprite3D4")]

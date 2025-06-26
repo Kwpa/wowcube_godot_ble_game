@@ -13,8 +13,18 @@ var is_facing_gap = false
 
 const SPEED = 100
 
+var current_tile : Node3D
+var adjacent_tiles : Array[Node3D]
+var world_ref
+
+
 func _ready():
 	Events.connect("twist", twist_input)
+	Events.connect("tap", tap_input)
+	world_ref = owner
+	await get_tree().create_timer(1).timeout
+	current_tile = world_ref.cells[[0,0]]
+
 
 func collision_check(direction):
 	if direction != null:
@@ -26,8 +36,16 @@ func collision_check(direction):
 func move():
 	if !forward.is_colliding():
 		tween_onwards(direction,.4)
+		step_to_new_tile(direction)
 		#global_transform.origin.x += direction.x
 		#global_transform.origin.z += direction.z
+
+
+func step_to_new_tile(direction):
+	var current_tile_id = current_tile.tile_id
+	var new_id = [current_tile_id[0]+int(direction.x), current_tile_id[1]+int(direction.z)]
+	current_tile = world_ref.cells[new_id]
+	print(current_tile.tile_id)
 
 
 func _input(event):
@@ -47,6 +65,8 @@ func _input(event):
 		Events.emit_signal("twist", 1,2)
 	if event.is_action_pressed("E"):
 		Events.emit_signal("twist", 2,2)
+	if event.is_action_pressed("Left Shift"):
+		Events.emit_signal("tap", 1)
 
 
 func twist_input(scr : int, dir : int):
@@ -64,7 +84,12 @@ func twist_input(scr : int, dir : int):
 			print()
 		[2,2]:
 			print()
-		
+
+
+func tap_input(count : int):
+	if count == 1 or count == 2:
+		Events.emit_signal("shake_tile_elements", current_tile.tile_id, direction)
+	
 
 
 func rotate_and_set_direction(angle_delta: float):

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsi5lpmubgpua"]
+
+[ext_resource type="Script" uid="uid://k2jq04cf8ahb" path="res://Scripts/Components/shake_component.gd" id="1_wclis"]
+[ext_resource type="Texture2D" uid="uid://crr57jh0vhk3h" path="res://katie_work/rocks/ROCK_3_LARGE.png" id="2_l5pou"]
+
+[sub_resource type="Curve" id="Curve_l5pou"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, -18.1267, 0, 1, Vector2(0.0509194, -0.922999), 0.0, 0.0, 0, 0, Vector2(0.0707214, 0.881459), -0.145501, -0.145501, 0, 0, Vector2(0.113154, -0.8308), 0.0, 0.0, 0, 0, Vector2(0.179632, 0.841945), 0.0, 0.0, 0, 0, Vector2(0.244696, -0.758359), 0.0, 0.0, 0, 0, Vector2(0.312588, 0.611449), 0.0, 0.0, 0, 0, Vector2(0.374823, -0.554205), 0.0, 0.0, 0, 0, Vector2(0.441301, 0.308511), 0.0, 0.0, 0, 0, Vector2(0.502122, -0.323708), 0.0, 0.0, 0, 0, Vector2(0.558699, 0.14387), 0.0, 0.0, 0, 0, Vector2(0.622348, -0.191996), 0.0, 0.0, 0, 0, Vector2(0.680339, 0.0845999), 0.0, 0.0, 0, 0, Vector2(0.769448, -0.159068), 0.0, 0.0, 0, 0, Vector2(0.837341, 0.0385005), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.236695, 0.0, 1, 0]
+point_count = 16
+
+[node name="shake_component" type="Node3D" node_paths=PackedStringArray("north", "east", "south", "west")]
+script = ExtResource("1_wclis")
+north = [NodePath("Sprite3D4")]
+east = [NodePath("Sprite3D4")]
+south = [NodePath("Sprite3D4")]
+west = [NodePath("Sprite3D4")]
+slide_curve = SubResource("Curve_l5pou")
+shake_strength = 0.05
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
+sorting_offset = 10.0
+billboard = 2
+texture = ExtResource("2_l5pou")
