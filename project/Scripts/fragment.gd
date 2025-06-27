@@ -9,13 +9,15 @@ extends Node3D
 @export var slide_curve : Curve
 @export var travel_time : float = 1.0
 @export var fragment_id : int = 0
+@export var fragment_direction1 : Vector3i
+@export var fragment_direction2 : Vector3i
 
 func _ready():
 	Events.connect("reveal_fragment", reveal_frag)
 
 
 func reveal_frag(id : int):
-	if id == fragment_id:
+	if id == fragment_id and Global.fragments_collected[fragment_id] == false:
 		appear_from_hiding()
 	pass
 	

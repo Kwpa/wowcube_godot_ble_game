@@ -87,6 +87,7 @@ slide_curve = SubResource("Curve_3b7pg")
 
 [node name="fragment_sprite" type="Sprite3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+visible = false
 billboard = 2
 texture = ExtResource("1_fnwbw")
 

@@ -8,6 +8,8 @@
 [node name="fragment1" parent="." index="0" instance=ExtResource("2_odvp2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41586, 0.449775, -0.437558)
 fragment_id = 1
+fragment_direction1 = Vector3i(0, 0, -1)
+fragment_direction2 = Vector3i(-1, 0, 0)
 
 [node name="shake_component" parent="." index="1" node_paths=PackedStringArray("fragment")]
 fragment = NodePath("../fragment1")

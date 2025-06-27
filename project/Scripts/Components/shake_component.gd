@@ -50,6 +50,7 @@ func shake(tile_id : Array, direction : Vector3i):
 		
 		await get_tree().create_timer(1.3).timeout
 		
-		if fragment != null:
+		# is there a fragment??
+		if fragment != null and (fragment.fragment_direction1 == direction or fragment.fragment_direction2 == direction):
 			Events.emit_signal("reveal_fragment",fragment.fragment_id)
 		

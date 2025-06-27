@@ -5,18 +5,36 @@
 
 [node name="fragment_tile_4" instance=ExtResource("1_oihs7")]
 
-[node name="fragment" parent="." index="0" instance=ExtResource("2_vpa3i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457979, 0, 0.259754)
+[node name="fragment4" parent="." index="0" instance=ExtResource("2_vpa3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.300638, -5.96046e-08, -0.261802)
 fragment_id = 4
+fragment_direction1 = Vector3i(1, 0, 0)
+fragment_direction2 = Vector3i(0, 0, -1)
+
+[node name="shake_component" parent="." index="1" node_paths=PackedStringArray("fragment")]
+fragment = NodePath("../fragment4")
+
+[node name="Sprite3D2" parent="." index="11"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.308909, 0, -0.401659)
 
 [node name="Sprite3D5" parent="." index="12"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.160407, 2.98023e-08, -0.251142)
 script = null
 
 [node name="Sprite3D6" parent="." index="13"]
+transform = Transform3D(0.038939, 0, 0, 0, 0.026194, 0, 0, 0, 0.0686776, 0.353033, 0, -0.275259)
 script = null
 
 [node name="Sprite3D7" parent="." index="14"]
+transform = Transform3D(0.038939, 0, 0, 0, 0.0386956, 0, 0, 0, 0.0702384, 0.449463, 0, -0.169175)
 script = null
 
 [node name="Sprite3D3" parent="." index="15"]
-transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.331095, 0, -0.433199)
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.315784, 0, 0.373358)
+
+[node name="spawn_position_2" parent="Sprite3D3" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8693, 0, 0.403114)
+
+[node name="Sprite3D4" parent="." index="16" node_paths=PackedStringArray("spawn_locations")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.287754, 0, -0.376904)
+spawn_locations = [NodePath("spawn_position_1")]
