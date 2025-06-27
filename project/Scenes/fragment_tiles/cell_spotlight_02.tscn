@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5b8rif26yioy"]
-
-[ext_resource type="PackedScene" uid="uid://bxnxbft7wpc32" path="res://Game/dungeon_map_cells/cell_spotlight_02.tscn" id="1_ejmfd"]
-[ext_resource type="PackedScene" uid="uid://15ta3gomi412" path="res://Scenes/fragment.tscn" id="2_pv0t8"]
-
-[node name="fragment_tile_2" instance=ExtResource("1_ejmfd")]
-
-[node name="fragment" parent="Sprite3D4" index="4" instance=ExtResource("2_pv0t8")]

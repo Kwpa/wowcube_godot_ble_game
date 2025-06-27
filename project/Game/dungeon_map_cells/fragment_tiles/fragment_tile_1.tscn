@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhc1avevfx4hf"]
+
+[ext_resource type="PackedScene" uid="uid://bu7y4nwsyidl6" path="res://Game/dungeon_map_cells/cell_spotlight_01.tscn" id="1_ag87p"]
+[ext_resource type="PackedScene" uid="uid://15ta3gomi412" path="res://Scenes/fragment.tscn" id="2_odvp2"]
+
+[node name="fragment_tile_1" instance=ExtResource("1_ag87p")]
+
+[node name="fragment1" parent="." index="0" instance=ExtResource("2_odvp2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.41586, 0.449775, -0.437558)
+fragment_id = 1
+
+[node name="shake_component" parent="." index="1" node_paths=PackedStringArray("fragment")]
+fragment = NodePath("../fragment1")
+
+[node name="Sprite3D6" parent="." index="13"]
+script = null

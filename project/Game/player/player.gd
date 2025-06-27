@@ -9,6 +9,8 @@ extends CharacterBody3D
 @export var slide_curve : Curve
 @export var warp_strength : float = 0.1
 
+@onready var front_hover_pos = $front_hover_pos
+
 
 var is_rotating := false
 var is_moving := false

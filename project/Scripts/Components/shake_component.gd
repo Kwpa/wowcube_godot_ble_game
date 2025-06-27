@@ -3,7 +3,7 @@ extends Node3D
 @export var slide_curve : Curve
 @export var all_shaking_elements : Array[Node3D]
 @export var shake_strength : float = 2
-
+@export var fragment : Node3D
 
 func _ready():
 	Events.connect("shake_tile_elements", shake)
@@ -48,4 +48,8 @@ func shake(tile_id : Array, direction : Vector3i):
 					var curve_progress := slide_curve.sample(progress)
 					item.position = pos+Vector3(shake_strength*curve_progress,0,0), 0.0, 1.0,2)
 		
+		await get_tree().create_timer(1.3).timeout
+		
+		if fragment != null:
+			Events.emit_signal("reveal_fragment",fragment.fragment_id)
 		

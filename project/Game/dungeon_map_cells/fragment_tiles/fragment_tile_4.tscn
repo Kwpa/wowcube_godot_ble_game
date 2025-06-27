@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cvrlqgqkyoflf"]
+
+[ext_resource type="PackedScene" uid="uid://x0vf2lj246yn" path="res://Game/dungeon_map_cells/cell_spotlight_04.tscn" id="1_oihs7"]
+[ext_resource type="PackedScene" uid="uid://15ta3gomi412" path="res://Scenes/fragment.tscn" id="2_vpa3i"]
+
+[node name="fragment_tile_4" instance=ExtResource("1_oihs7")]
+
+[node name="fragment" parent="." index="0" instance=ExtResource("2_vpa3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.457979, 0, 0.259754)
+fragment_id = 4
+
+[node name="Sprite3D5" parent="." index="12"]
+script = null
+
+[node name="Sprite3D6" parent="." index="13"]
+script = null
+
+[node name="Sprite3D7" parent="." index="14"]
+script = null
+
+[node name="Sprite3D3" parent="." index="15"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.331095, 0, -0.433199)

@@ -1,13 +1,112 @@
-[gd_scene load_steps=3 format=3 uid="uid://15ta3gomi412"]
+[gd_scene load_steps=16 format=3 uid="uid://15ta3gomi412"]
 
 [ext_resource type="Script" uid="uid://dcv2jelx88lqp" path="res://Scripts/fragment.gd" id="1_brxyv"]
 [ext_resource type="Texture2D" uid="uid://e3slpmpq3rae" path="res://Textures/feather.png" id="1_fnwbw"]
+[ext_resource type="Texture2D" uid="uid://bqrc5yfr7deu8" path="res://addons/kenney_particle_pack/smoke_01.png" id="3_glghq"]
+[ext_resource type="Texture2D" uid="uid://4nlopxkhoqku" path="res://addons/kenney_particle_pack/light_01.png" id="4_3b7pg"]
+
+[sub_resource type="Curve" id="Curve_3b7pg"]
+_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_glghq"]
+offsets = PackedFloat32Array(0, 0.286738, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3b7pg"]
+gradient = SubResource("Gradient_glghq")
+
+[sub_resource type="Curve" id="Curve_uubfi"]
+_data = [Vector2(0, 0), 0.0, 0.965625, 0, 1, Vector2(0.31068, 0.3), 0.0, 0.0, 0, 0, Vector2(0.566343, 0.0583334), 0.0, 0.0, 0, 0, Vector2(1, 0.0666667), 0.0192164, 0.0, 1, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_4u4il"]
+curve = SubResource("Curve_uubfi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3b7pg"]
+emission_shape = 2
+emission_sphere_radius = 0.01
+angle_min = -360.0
+angle_max = 360.0
+spread = 180.0
+flatness = 1.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.5
+scale_curve = SubResource("CurveTexture_4u4il")
+color = Color(0.118389, 0.629463, 0.819254, 1)
+color_ramp = SubResource("GradientTexture1D_3b7pg")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uubfi"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_glghq")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_3n25b"]
+material = SubResource("StandardMaterial3D_uubfi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uubfi"]
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+spread = 0.0
+gravity = Vector3(0, 1, 0)
+scale_min = 0.9
+scale_curve = SubResource("CurveTexture_4u4il")
+color = Color(1, 0.930387, 0.74848, 1)
+color_ramp = SubResource("GradientTexture1D_3b7pg")
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4u4il"]
+transparency = 1
+shading_mode = 0
+diffuse_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("4_3b7pg")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_01tiw"]
+material = SubResource("StandardMaterial3D_4u4il")
 
 [node name="fragment" type="Node3D"]
 script = ExtResource("1_brxyv")
+slide_curve = SubResource("Curve_3b7pg")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="fragment_sprite" type="Sprite3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
 billboard = 2
 texture = ExtResource("1_fnwbw")
+
+[node name="smoke_effect" type="GPUParticles3D" parent="fragment_sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0325422, 0)
+amount = 3
+lifetime = 0.74
+explosiveness = 0.29
+randomness = 0.13
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_3b7pg")
+draw_pass_1 = SubResource("QuadMesh_3n25b")
+
+[node name="light_effect" type="GPUParticles3D" parent="fragment_sprite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0325422, 0)
+emitting = false
+amount = 2
+one_shot = true
+visibility_aabb = AABB(-2, -2, -2, 4, 4, 4)
+process_material = SubResource("ParticleProcessMaterial_uubfi")
+draw_pass_1 = SubResource("QuadMesh_01tiw")
 
 [node name="start" type="Node3D" parent="."]
