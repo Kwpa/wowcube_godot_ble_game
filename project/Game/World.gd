@@ -49,9 +49,11 @@ func _ready():
 	make_cells(used_tiles_7,Cell7)
 	make_cells(used_tiles_8,Cell8)
 	
-
 	for cell in cells.values():
 		cell.update_faces(used_tiles)
+	
+	await get_tree().create_timer(10).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile")
 
 
 func get_adjacent_cells(input:Array) -> Array[Array]:

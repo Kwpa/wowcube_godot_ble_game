@@ -30,7 +30,7 @@ func fade_in_out_label(element:Control):
 		Color(1,1,1,1), 
 		1).set_ease(Tween.EaseType.EASE_IN)
 	await tween.finished
-	await get_tree().create_timer(1)
+	await get_tree().create_timer(1).timeout
 	var tween2 = create_tween()
 	tween2.tween_property(
 		element, 

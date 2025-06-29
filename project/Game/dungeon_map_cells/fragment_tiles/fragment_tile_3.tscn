@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://15ta3gomi412" path="res://Scenes/fragment.tscn" id="2_gasjr"]
 
 [node name="fragment_tile_3" instance=ExtResource("1_x4e7v")]
+has_fragment = true
 
 [node name="fragment3" parent="." index="0" instance=ExtResource("2_gasjr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.400904, 0.346523, 0.259397)
