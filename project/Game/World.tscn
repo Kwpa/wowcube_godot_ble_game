@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=16 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
@@ -6,10 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://ccxuw8qubuhk1" path="res://Scenes/enemy_1.tscn" id="4_dyu4a"]
 [ext_resource type="Script" uid="uid://c27lht6f6nnnp" path="res://Scripts/example_script.gd" id="6_5aejl"]
 [ext_resource type="PackedScene" uid="uid://bjqgedx425woe" path="res://Scenes/moon_phase_component.tscn" id="6_wb7ei"]
-[ext_resource type="Texture2D" uid="uid://dgvklgjt2y2ef" path="res://Textures/hand.png" id="7_w5src"]
+[ext_resource type="Texture2D" uid="uid://ct52g7it38mly" path="res://katie_work/hand.png" id="7_p22qx"]
 [ext_resource type="Shader" uid="uid://bi02mjwf21y3w" path="res://Shaders/invert.gdshader" id="7_wb7ei"]
 [ext_resource type="Script" uid="uid://bhdvjnt5fk4kj" path="res://Scripts/gentle_bob.gd" id="8_uyedj"]
 [ext_resource type="Texture2D" uid="uid://ch02ll3ii1wtq" path="res://Textures/Screenshot 2025-06-26 160227.png" id="10_cfe18"]
+[ext_resource type="PackedScene" uid="uid://dxdjq4qwsl62a" path="res://Scenes/debug_ui.tscn" id="11_p22qx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
@@ -70,7 +71,7 @@ offset_left = 164.0
 offset_top = 406.0
 offset_right = 401.0
 offset_bottom = 807.0
-texture = ExtResource("7_w5src")
+texture = ExtResource("7_p22qx")
 expand_mode = 1
 script = ExtResource("8_uyedj")
 
@@ -79,7 +80,7 @@ offset_left = 696.0
 offset_top = 406.0
 offset_right = 933.0
 offset_bottom = 807.0
-texture = ExtResource("7_w5src")
+texture = ExtResource("7_p22qx")
 expand_mode = 1
 flip_h = true
 script = ExtResource("8_uyedj")
@@ -103,3 +104,5 @@ texture = ExtResource("10_cfe18")
 [node name="moon_phase_component2" parent="." node_paths=PackedStringArray("new_moon_phase_list") instance=ExtResource("6_wb7ei")]
 visible = false
 new_moon_phase_list = [NodePath("../Sprite3D4")]
+
+[node name="debug_ui" parent="." instance=ExtResource("11_p22qx")]

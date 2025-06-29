@@ -32,7 +32,8 @@ public:
     bool open_device(String device_name, String device_id, String cubeapp_uuid);
     void close_device(String device_name, String device_id);
     bool write_to_device(String device_name, String device_id, PackedByteArray data);
-
+    void set_emulator_support(bool b);
+    bool get_emulator_support();
     Array get_devices();
     HashMap<String, Ref<WOWDevice>> device_table;
     Ref<WOWDevice> get_device(const String &name, const String &id);

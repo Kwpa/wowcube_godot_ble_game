@@ -54,7 +54,33 @@ func _ready():
 		cell.update_faces(used_tiles)
 
 
-
+func get_adjacent_cells(input:Array) -> Array[Array]:
+	var arr = []
+	if cells.has([input[0]+1,input[1]]):
+		arr.append([input[0],input[1]+1])
+	
+	if cells.has([input[0],input[1]+1]):
+		arr.append([input[0],input[1]+1])
+	
+	if cells.has([input[0]+1,input[1]+1]):
+		arr.append([input[0]+1,input[1]+1])
+	
+	if cells.has([input[0]-1,input[1]]):
+		arr.append([input[0]-1,input[1]])
+	
+	if cells.has([input[0],input[1]-1]):
+		arr.append([input[0],input[1]-1])
+	
+	if cells.has([input[0]-1,input[1]-1]):
+		arr.append([input[0]-1,input[1]-1])
+	
+	if cells.has([input[0]+1,input[1]-1]):
+		arr.append([input[0]+1,input[1]-1])
+	
+	if cells.has([input[0]-1,input[1]+1]):
+		arr.append([input[0]-1,input[1]+1])
+		
+	return arr
 
 
 func make_cells(tiles, instantiated_cell):

@@ -16,6 +16,12 @@ void WOWCube::_bind_methods() {
 
     ClassDB::bind_method(D_METHOD("set_logging_level", "level"), &WOWCube::set_logging_level, DEFVAL(0));
     ClassDB::bind_method(D_METHOD("get_logging_level"), &WOWCube::get_logging_level);
+
+    ClassDB::bind_method(D_METHOD("set_emulator_support", "support"), &WOWCube::set_emulator_support, DEFVAL(false));
+    ClassDB::bind_method(D_METHOD("get_emulator_support"), &WOWCube::get_emulator_support);
+
+    ADD_PROPERTY(PropertyInfo(Variant::BOOL, "emulator_support"), "set_emulator_support", "get_emulator_support");
+
     ADD_PROPERTY(PropertyInfo(Variant::INT, "logging_level"), "set_logging_level", "get_logging_level");
 
     ClassDB::bind_method(D_METHOD("get_devices"), &WOWCube::get_devices);
@@ -34,6 +40,14 @@ WOWCube::~WOWCube() {
     device_table.clear();
 }
 
+void WOWCube::set_emulator_support(bool b) {
+    wowconnect_set_emulator_support(b);
+}
+
+bool WOWCube::get_emulator_support() {
+    return wowconnect_get_emulator_support();
+}
+
 void WOWCube::set_logging_level(int level) {
     logging_level = level;
 }
@@ -43,7 +57,7 @@ int WOWCube::get_logging_level() const {
 }
 
 String WOWCube::get_version() const {
-    return String(wowonnect_get_version());
+    return String(wowconnect_get_version());
 }
 
 Array WOWCube::get_devices() {
@@ -96,6 +110,7 @@ Ref<WOWDevice> WOWCube::get_device(const String &name, const String &id) {
 }
 
 static void wowcube_log_delegate(wowconnect_log_level_t level, const char* message) {
+    return;
     if (WOWCube::singleton) {
         String msg = String(message);
         if (level == 0 && msg.begins_with("Device enumeration completed")) {

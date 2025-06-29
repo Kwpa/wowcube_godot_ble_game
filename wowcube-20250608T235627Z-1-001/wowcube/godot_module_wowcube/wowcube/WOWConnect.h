@@ -53,17 +53,17 @@ typedef void(*message_received_delegate_t)(wowconnect_device_t device, unsigned 
 /// <summary>
 /// Returns library version
 /// </summary>
-extern "C" WOWCONNECTMANAGED_API const char* wowonnect_get_version();
+extern "C" WOWCONNECTMANAGED_API const char* wowconnect_get_version();
 
-// /// <summary>
-// /// Returns emulator support status
-// /// </summary>
-// extern "C" WOWCONNECTMANAGED_API const bool wowconnect_get_emulator_support();
+/// <summary>
+/// Returns emulator support status
+/// </summary>
+extern "C" WOWCONNECTMANAGED_API const bool wowconnect_get_emulator_support();
 
-// /// <summary>
-// /// Sets emulator support status
-// /// </summary>
-// extern "C" WOWCONNECTMANAGED_API const void wowconnect_set_emulator_support(bool value);
+/// <summary>
+/// Sets emulator support status
+/// </summary>
+extern "C" WOWCONNECTMANAGED_API const void wowconnect_set_emulator_support(bool value);
 
 /// <summary>
 /// Returns last error code

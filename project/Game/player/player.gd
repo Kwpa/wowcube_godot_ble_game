@@ -52,7 +52,23 @@ func step_to_new_tile(direction):
 	var new_id = [current_tile_id[0]+int(direction.x), current_tile_id[1]+int(direction.z)]
 	current_tile = world_ref.cells[new_id]
 	print(current_tile.tile_id)
+	
+	adjacent_tiles.clear()
+	
+	var adj_cells = world_ref.get_adjacent_cells(current_tile.tile_id[0])
+	if adj_cells != []:
+		for cell_id in adj_cells:
+			adjacent_tiles.append(world_ref.cells[cell_id])
+	
+	check_for_fragments()
 
+func check_for_fragments():
+	if current_tile.has_fragment:
+		Events.emit_signal("send_msg_to_cube","fragment_on_tile")
+	else:
+		for adj_tile in adjacent_tiles:
+			if adj_tile.has_fragment:
+				Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile")
 
 func _input(event):
 	if is_rotating:
@@ -93,7 +109,7 @@ func twist_input(scr : int, dir : int):
 
 
 func tap_input(count : int):
-	if count == 1 or count == 2:
+	if count == 2:
 		Events.emit_signal("shake_tile_elements", current_tile.tile_id, direction)
 		warp_camera()
 	
