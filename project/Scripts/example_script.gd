@@ -46,9 +46,9 @@ func write_to_device(msg:String):
 	var data: PackedByteArray = PackedByteArray([10,10,10])
 	match msg:
 		"fragment_on_tile":
-			data = PackedByteArray([11,12,13])
+			data = PackedByteArray([0x01, 0x02, 0x03, 0x04])
 		"fragment_on_nearby_tile":
-			data = PackedByteArray([11,12,14])
+			data = PackedByteArray([0x01, 0x02, 0x03, 0x05])
 	
 	wowcube.write_to_device(device_name,device_id,data)
 

@@ -56,10 +56,10 @@ func _ready():
 	Events.emit_signal("send_msg_to_cube","fragment_on_tile")
 
 
-func get_adjacent_cells(input:Array) -> Array[Array]:
+func get_adjacent_cells(input:Array) -> Array:
 	var arr = []
 	if cells.has([input[0]+1,input[1]]):
-		arr.append([input[0],input[1]+1])
+		arr.append([input[0]+1,input[1]])
 	
 	if cells.has([input[0],input[1]+1]):
 		arr.append([input[0],input[1]+1])

@@ -54,11 +54,13 @@ func step_to_new_tile(direction):
 	print(current_tile.tile_id)
 	
 	adjacent_tiles.clear()
-	
-	var adj_cells = world_ref.get_adjacent_cells(current_tile.tile_id[0])
+	print("****** " + str(current_tile.tile_id))
+	var adj_cells = world_ref.get_adjacent_cells(current_tile.tile_id)
+	var cells = world_ref.cells
 	if adj_cells != []:
 		for cell_id in adj_cells:
-			adjacent_tiles.append(world_ref.cells[cell_id])
+			var key = [cell_id[0],cell_id[1]] 
+			adjacent_tiles.append(world_ref.cells[key])
 	
 	check_for_fragments()
 
@@ -88,7 +90,7 @@ func _input(event):
 	if event.is_action_pressed("E"):
 		Events.emit_signal("twist", 2,2)
 	if event.is_action_pressed("Left Shift"):
-		Events.emit_signal("tap", 1)
+		Events.emit_signal("tap", 2)
 
 
 func twist_input(scr : int, dir : int):
