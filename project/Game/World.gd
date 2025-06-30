@@ -52,30 +52,36 @@ func _ready():
 	for cell in cells.values():
 		cell.update_faces(used_tiles)
 	
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot1_filled",0)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot1_filled",1)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot2_filled",0)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot2_filled",1)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot3_filled",0)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot3_filled",1)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot4_filled",0)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","slot4_filled",1)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
-	await get_tree().create_timer(1).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(3).timeout
+
 	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
-	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
+	
+	
+	await get_tree().create_timer(3).timeout
+	Events.emit_signal("send_msg_to_cube","slot1_filled",1)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot1_filled",0)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot2_filled",1)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot2_filled",0)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot3_filled",1)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot3_filled",0)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot4_filled",1)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","slot4_filled",0)
+	await get_tree().create_timer(2).timeout
 	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",1)
+	await get_tree().create_timer(6).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
+	await get_tree().create_timer(2).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
+	await get_tree().create_timer(6).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
 
 
 func get_adjacent_cells(input:Array) -> Array:

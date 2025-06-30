@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=18 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ch02ll3ii1wtq" path="res://Textures/Screenshot 2025-06-26 160227.png" id="10_cfe18"]
 [ext_resource type="Script" uid="uid://boug2x4s52vc2" path="res://Scripts/sound.gd" id="11_0lo2d"]
 [ext_resource type="PackedScene" uid="uid://dxdjq4qwsl62a" path="res://Scenes/debug_ui.tscn" id="11_p22qx"]
+[ext_resource type="AudioStream" uid="uid://d1h3jb3qqg2jh" path="res://audio/Viking inspired rough minimal.mp3" id="11_qg4go"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
@@ -98,6 +99,8 @@ size_flags_vertical = 3
 script = ExtResource("11_0lo2d")
 
 [node name="stream" type="AudioStreamPlayer3D" parent="sound"]
+stream = ExtResource("11_qg4go")
+autoplay = true
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 1.39244, 0.28969, 0.283878)
