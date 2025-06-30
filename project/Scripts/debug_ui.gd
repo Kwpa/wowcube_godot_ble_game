@@ -2,12 +2,13 @@ extends Control
 @onready var con = $vbox/connected
 @onready var cubcon = $vbox/cube_connected
 @onready var dis = $vbox/disconnected
-
+@onready var error = $vbox/error
 
 func _ready():
 	Events.connect("app_connected", app_connect)
 	Events.connect("cube_connected", cube_connect)
 	Events.connect("cube_disconnected", cube_disconnect)
+	Events.connect("error", cube_error)
 
 func app_connect(msg:String):
 	con.get_child(0).text = "app connected: " + msg
@@ -21,6 +22,11 @@ func cube_connect(msg:String):
 
 func cube_disconnect():
 	fade_in_out_label(dis)
+	
+	
+func cube_error():
+	fade_in_out_label(dis)
+
 
 func fade_in_out_label(element:Control):
 	var tween = create_tween()

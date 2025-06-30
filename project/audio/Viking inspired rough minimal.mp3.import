@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1h3jb3qqg2jh"
+path="res://.godot/imported/Viking inspired rough minimal.mp3-8ab91c6827e99d07141f262118925728.mp3str"
+
+[deps]
+
+source_file="res://audio/Viking inspired rough minimal.mp3"
+dest_files=["res://.godot/imported/Viking inspired rough minimal.mp3-8ab91c6827e99d07141f262118925728.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

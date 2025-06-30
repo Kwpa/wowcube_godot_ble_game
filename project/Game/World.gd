@@ -52,8 +52,30 @@ func _ready():
 	for cell in cells.values():
 		cell.update_faces(used_tiles)
 	
-	await get_tree().create_timer(10).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_tile")
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot1_filled",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot1_filled",1)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot2_filled",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot2_filled",1)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot3_filled",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot3_filled",1)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot4_filled",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","slot4_filled",1)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
+	await get_tree().create_timer(1).timeout
+	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",1)
 
 
 func get_adjacent_cells(input:Array) -> Array:
@@ -87,7 +109,7 @@ func get_adjacent_cells(input:Array) -> Array:
 
 func make_cells(tiles, instantiated_cell):
 	for tile in tiles:
-		print(tile)
+		#print(tile)
 		var cell = instantiated_cell.instantiate()
 		add_child(cell)
 		cell.owner = get_tree().edited_scene_root

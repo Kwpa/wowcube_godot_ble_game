@@ -13,6 +13,7 @@ var map_collection_type : Global.MAP_COLLECTION
 var tile_id = [0,0]
 
 @export var has_fragment = false
+@export var is_phase_change_tile = false
 
 func update_faces(cell_list) -> void:
 	var my_grid_position = Vector2i(global_transform.origin.x / Global.GRID_SIZE, global_transform.origin.z / 1)

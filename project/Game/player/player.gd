@@ -51,7 +51,7 @@ func step_to_new_tile(direction):
 	var current_tile_id = current_tile.tile_id
 	var new_id = [current_tile_id[0]+int(direction.x), current_tile_id[1]+int(direction.z)]
 	current_tile = world_ref.cells[new_id]
-	print(current_tile.tile_id)
+	##print(current_tile.tile_id)
 	
 	adjacent_tiles.clear()
 	print("****** " + str(current_tile.tile_id))

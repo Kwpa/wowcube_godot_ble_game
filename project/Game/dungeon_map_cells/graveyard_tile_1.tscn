@@ -67,7 +67,7 @@ size = Vector2(0.05, 0.05)
 [node name="graveyard_tile_1" instance=ExtResource("1_tukkl")]
 
 [node name="shake_component" parent="." index="0" node_paths=PackedStringArray("all_shaking_elements") instance=ExtResource("2_sbh1q")]
-all_shaking_elements = [NodePath("../West/Sprite3D10"), NodePath("../East/Sprite3D12"), NodePath("../North/Sprite3D13"), NodePath("../South/Sprite3D11"), NodePath(""), NodePath("../Sprite3D6"), NodePath("../Sprite3D7"), NodePath("../Sprite3D8"), NodePath("../Sprite3D10")]
+all_shaking_elements = [NodePath("../West/Sprite3D10"), NodePath("../East/Sprite3D12"), NodePath("../North/Sprite3D13"), NodePath("../South/Sprite3D11"), null, NodePath("../Sprite3D6"), NodePath("../Sprite3D7"), NodePath("../Sprite3D8"), NodePath("../Sprite3D10")]
 
 [node name="West" parent="." index="3"]
 visible = true

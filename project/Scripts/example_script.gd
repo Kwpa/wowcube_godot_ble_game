@@ -7,6 +7,7 @@ var device_name : String
 var device_id : String
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	return
 	Events.connect("send_msg_to_cube",write_to_device)
 	new_cube()
 	while (true):
@@ -68,3 +69,4 @@ func emit(data):
 			Events.emit_signal("app_connected","(event)")
 			first_time_connect = true
 		Events.emit_signal("tap", int(data[2]))
+		

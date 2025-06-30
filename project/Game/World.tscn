@@ -1,15 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=17 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
 [ext_resource type="PackedScene" uid="uid://b7yc03naufag0" path="res://Game/Map/map.tscn" id="2_prens"]
 [ext_resource type="PackedScene" uid="uid://ccxuw8qubuhk1" path="res://Scenes/enemy_1.tscn" id="4_dyu4a"]
-[ext_resource type="Script" uid="uid://c27lht6f6nnnp" path="res://Scripts/example_script.gd" id="6_5aejl"]
+[ext_resource type="Script" uid="uid://ds6co51tw5803" path="res://Scripts/io_cube.gd" id="6_o746u"]
 [ext_resource type="PackedScene" uid="uid://bjqgedx425woe" path="res://Scenes/moon_phase_component.tscn" id="6_wb7ei"]
 [ext_resource type="Texture2D" uid="uid://ct52g7it38mly" path="res://katie_work/hand.png" id="7_p22qx"]
 [ext_resource type="Shader" uid="uid://bi02mjwf21y3w" path="res://Shaders/invert.gdshader" id="7_wb7ei"]
 [ext_resource type="Script" uid="uid://bhdvjnt5fk4kj" path="res://Scripts/gentle_bob.gd" id="8_uyedj"]
 [ext_resource type="Texture2D" uid="uid://ch02ll3ii1wtq" path="res://Textures/Screenshot 2025-06-26 160227.png" id="10_cfe18"]
+[ext_resource type="Script" uid="uid://boug2x4s52vc2" path="res://Scripts/sound.gd" id="11_0lo2d"]
 [ext_resource type="PackedScene" uid="uid://dxdjq4qwsl62a" path="res://Scenes/debug_ui.tscn" id="11_p22qx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
@@ -60,8 +61,8 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0037
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_wb7ei")
 
-[node name="input_from_cube" type="Node3D" parent="."]
-script = ExtResource("6_5aejl")
+[node name="io_cube" type="Node3D" parent="."]
+script = ExtResource("6_o746u")
 
 [node name="moon_phase_component" parent="." node_paths=PackedStringArray("full_moon_phase_list") instance=ExtResource("6_wb7ei")]
 full_moon_phase_list = [NodePath("../Control")]
@@ -94,6 +95,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="sound" type="Node" parent="."]
+script = ExtResource("11_0lo2d")
+
+[node name="stream" type="AudioStreamPlayer3D" parent="sound"]
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
 transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 1.39244, 0.28969, 0.283878)
