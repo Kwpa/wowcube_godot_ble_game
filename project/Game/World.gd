@@ -9,6 +9,10 @@ const Cell5 = preload("res://Game/dungeon_map_cells/fragment_tiles/fragment_tile
 const Cell6 = preload("res://Game/dungeon_map_cells/fragment_tiles/fragment_tile_2.tscn")
 const Cell7 = preload("res://Game/dungeon_map_cells/fragment_tiles/fragment_tile_3.tscn")
 const Cell8 = preload("res://Game/dungeon_map_cells/fragment_tiles/fragment_tile_4.tscn")
+const Cell9 = preload("res://Game/dungeon_map_cells/graveyard_tile_1.tscn")
+const Cell10 = preload("res://Game/dungeon_map_cells/graveyard_tile_2.tscn")
+const Cell11 = preload("res://Game/dungeon_map_cells/graveyard_tile_3.tscn")
+const Cell12 = preload("res://Game/dungeon_map_cells/graveyard_tile_4.tscn")
 
 @export var Map: PackedScene
 
@@ -28,6 +32,10 @@ func _ready():
 	var used_tiles_6 = tile_map.get_used_cells_by_id(-1,Vector2i(1,1))
 	var used_tiles_7 = tile_map.get_used_cells_by_id(-1,Vector2i(2,1))
 	var used_tiles_8 = tile_map.get_used_cells_by_id(-1,Vector2i(3,1))
+	var used_tiles_9 = tile_map.get_used_cells_by_id(-1,Vector2i(0,2))
+	var used_tiles_10 = tile_map.get_used_cells_by_id(-1,Vector2i(1,2))
+	var used_tiles_11 = tile_map.get_used_cells_by_id(-1,Vector2i(2,2))
+	var used_tiles_12 = tile_map.get_used_cells_by_id(-1,Vector2i(3,2))
 	var used_tiles = []
 	used_tiles.append_array(used_tiles_1)
 	used_tiles.append_array(used_tiles_2)
@@ -37,6 +45,10 @@ func _ready():
 	used_tiles.append_array(used_tiles_6)
 	used_tiles.append_array(used_tiles_7)
 	used_tiles.append_array(used_tiles_8)
+	used_tiles.append_array(used_tiles_9)
+	used_tiles.append_array(used_tiles_10)
+	used_tiles.append_array(used_tiles_11)
+	used_tiles.append_array(used_tiles_12)
 	
 	map.free()
 	
@@ -48,6 +60,12 @@ func _ready():
 	make_cells(used_tiles_6,Cell6)
 	make_cells(used_tiles_7,Cell7)
 	make_cells(used_tiles_8,Cell8)
+	make_cells(used_tiles_9,Cell9)
+	make_cells(used_tiles_10,Cell10)
+	make_cells(used_tiles_11,Cell11)
+	make_cells(used_tiles_12,Cell12)
+	
+	
 	
 	for cell in cells.values():
 		cell.update_faces(used_tiles)
@@ -58,30 +76,30 @@ func _ready():
 	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
 	
 	
-	await get_tree().create_timer(3).timeout
-	Events.emit_signal("send_msg_to_cube","slot1_filled",1)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot1_filled",0)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot2_filled",1)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot2_filled",0)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot3_filled",1)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot3_filled",0)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot4_filled",1)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","slot4_filled",0)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",1)
-	await get_tree().create_timer(6).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
-	await get_tree().create_timer(2).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
-	await get_tree().create_timer(6).timeout
-	Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
+	#await get_tree().create_timer(3).timeout
+	#Events.emit_signal("send_msg_to_cube","slot1_filled",1)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot1_filled",0)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot2_filled",1)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot2_filled",0)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot3_filled",1)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot3_filled",0)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot4_filled",1)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","slot4_filled",0)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",1)
+	#await get_tree().create_timer(6).timeout
+	#Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
+	#await get_tree().create_timer(2).timeout
+	#Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
+	#await get_tree().create_timer(6).timeout
+	#Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
 
 
 func get_adjacent_cells(input:Array) -> Array:

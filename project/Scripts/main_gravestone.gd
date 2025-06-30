@@ -1,0 +1,26 @@
+extends Node3D
+
+@onready var empty_g = $empty_grave_slots
+@onready var slot_1 = $grave_slot_1
+@onready var slot_2 = $grave_slot_2
+@onready var slot_3 = $grave_slot_3
+@onready var slot_4 = $grave_slot_4
+
+
+func _ready():
+	Events.connect("play_gravestone_animation", animate)
+	
+
+func animate():
+	await get_tree().create_timer(1).timeout
+	empty_g.visible = false
+	slot_1.visible = true
+	await get_tree().create_timer(1).timeout
+	slot_1.visible = false
+	slot_2.visible = true
+	await get_tree().create_timer(1).timeout
+	slot_2.visible = false
+	slot_3.visible = true
+	await get_tree().create_timer(1).timeout
+	slot_3.visible = false
+	slot_4.visible = true

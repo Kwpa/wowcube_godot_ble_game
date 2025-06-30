@@ -9,6 +9,7 @@ var found_devices:Array[WOWDevice] = []
 var waiting_for_data_from_wow_cube:bool = false
 var wowcube:WOWCube = null
 var first_time_connect = false
+var ignore_wowcube = true
 
 var sending_msg : bool = false
 var out_data: PackedByteArray = PackedByteArray([0,0,0,0])
@@ -35,7 +36,7 @@ func device_detected(device:WOWDevice):
 
 
 func _ready():
-	
+	if ignore_wowcube: return
 	Events.connect("send_msg_to_cube",write_to_device)
 	await get_tree().process_frame
 	wowcube = WOWCube.new()
@@ -49,6 +50,8 @@ func _ready():
 		print("WOWConnect library is opened")
 	else:
 		printerr("WOW Connect failed to open with error %s" % wowcube.get_last_error_description())
+		if ignore_wowcube:
+			return
 
 	while (run_loop and is_inside_tree()):
 		await get_tree().process_frame
@@ -68,6 +71,8 @@ func _ready():
 				else:
 					Events.emit_signal("error")
 					printerr("Wow connect failed to open device %s with error %s" % [found_devices[0].device_name, wowcube.get_last_error_description()])
+					if ignore_wowcube:
+						return
 			else:
 				if sending_msg:
 					if wowcube.write_to_device(found_devices[0].device_name, found_devices[0].device_id, out_data):
@@ -82,13 +87,14 @@ func _ready():
 var delta_total :float = 0
 
 func _process(delta):
-	delta_total += delta
-	if delta_total >= 29.0:
-		Events.emit_signal("cube_disconnected")
-		wowcube.close_device(found_devices[0].device_name,found_devices[0].device_id)
-		wowcube.open_device(found_devices[0].device_name,found_devices[0].device_id,CUBEAPP_UUID)
-		Events.emit_signal("cube_connected", "manual")
-		delta_total = 0
+	if ignore_wowcube == false:
+		delta_total += delta
+		if delta_total >= 29.0:
+			Events.emit_signal("cube_disconnected")
+			wowcube.close_device(found_devices[0].device_name,found_devices[0].device_id)
+			wowcube.open_device(found_devices[0].device_name,found_devices[0].device_id,CUBEAPP_UUID)
+			Events.emit_signal("cube_connected", "manual")
+			delta_total = 0
 
 func write_to_device(msg:String, val:int):
 	match msg:

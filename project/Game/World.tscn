@@ -103,9 +103,9 @@ stream = ExtResource("11_qg4go")
 autoplay = true
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
-transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 1.39244, 0.28969, 0.283878)
-visible = false
-sorting_offset = 10.0
+transform = Transform3D(-8.74228e-06, 0, 200, 0, 200, 0, -200, 0, -8.74228e-06, 6.39244, -0.71031, 0.283878)
+sorting_use_aabb_center = false
+offset = Vector2(0, 21)
 texture = ExtResource("10_cfe18")
 
 [node name="moon_phase_component2" parent="." node_paths=PackedStringArray("new_moon_phase_list") instance=ExtResource("6_wb7ei")]

@@ -1,0 +1,168 @@
+[gd_scene load_steps=11 format=3 uid="uid://4ns7brd58dmo"]
+
+[ext_resource type="PackedScene" uid="uid://7fqv8k5bo47u" path="res://Game/cell/cell_spotlight.tscn" id="1_ph0ie"]
+[ext_resource type="PackedScene" uid="uid://bsi5lpmubgpua" path="res://Scenes/shake_component.tscn" id="2_rmouw"]
+[ext_resource type="Material" uid="uid://drxu88g34gafy" path="res://Game/cell/cell.tres" id="3_irrx8"]
+[ext_resource type="Texture2D" uid="uid://md4hpiupb7ja" path="res://Textures/gravestone_small_lines.png" id="4_naemk"]
+[ext_resource type="PackedScene" uid="uid://duitq02er4h1n" path="res://Scenes/skeletree.tscn" id="4_ph0ie"]
+[ext_resource type="Script" uid="uid://b6j7icktsao38" path="res://Scripts/randomise_sprite.gd" id="5_k2wiq"]
+[ext_resource type="Texture2D" uid="uid://be5c48lo3unqt" path="res://Textures/branch.png" id="7_iw2t4"]
+[ext_resource type="Texture2D" uid="uid://d03vjh61pg38x" path="res://Textures/branch_lines.png" id="8_tcicl"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_2v324"]
+material = ExtResource("3_irrx8")
+size = Vector2(1, 1)
+orientation = 0
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b2lns"]
+data = PackedVector3Array(0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, 0.5, -0.5)
+
+[node name="graveyard_tile_4" instance=ExtResource("1_ph0ie")]
+
+[node name="shake_component" parent="." index="0" node_paths=PackedStringArray("all_shaking_elements") instance=ExtResource("2_rmouw")]
+all_shaking_elements = [null, null, null, null, null, null, null, null, NodePath("../Sprite3D10")]
+
+[node name="West" parent="." index="3"]
+visible = true
+layers = 0
+
+[node name="East" parent="." index="4"]
+visible = true
+layers = 0
+
+[node name="East2" type="MeshInstance3D" parent="." index="5"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0.5, 0)
+layers = 0
+mesh = SubResource("PlaneMesh_2v324")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="East2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="East2/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_b2lns")
+
+[node name="North" parent="." index="6"]
+visible = true
+layers = 0
+
+[node name="South" parent="." index="8"]
+visible = true
+layers = 0
+
+[node name="Sprite3D" parent="." index="9"]
+modulate = Color(0.982525, 0.284277, 0.434811, 1)
+
+[node name="Sprite3D2" parent="." index="11"]
+visible = false
+
+[node name="skeletree" parent="." index="12" instance=ExtResource("4_ph0ie")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.130965, 0, -0.100822)
+
+[node name="Sprite3D10" type="Sprite3D" parent="." index="13" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.05, 0, 0, 0, 0.0778737, 0, 0, 0, 0.05, 0.252, 0, 0.424)
+sorting_use_aabb_center = false
+offset = Vector2(0, 352)
+billboard = 2
+texture = ExtResource("4_naemk")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D10" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D10" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D12" type="Sprite3D" parent="." index="14" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.0384673, 0, 0, 0, 0.0336491, 0, 0, 0, 0.0500001, 0.242691, -5.96046e-08, 0.403631)
+sorting_use_aabb_center = false
+offset = Vector2(0, 500)
+billboard = 2
+texture = ExtResource("7_iw2t4")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D12" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D12" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D13" type="Sprite3D" parent="." index="15" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.0384673, 0, 0, 0, 0.0336491, 0, 0, 0, 0.0500001, 0.347707, -5.96046e-08, -0.207271)
+sorting_use_aabb_center = false
+offset = Vector2(0, 500)
+billboard = 2
+texture = ExtResource("8_tcicl")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D13" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D13" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D14" type="Sprite3D" parent="." index="16" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.0261362, 0, 0, 0, 0.0228625, 0, 0, 0, 0.033972, 0.26891, -5.96046e-08, -0.344973)
+sorting_use_aabb_center = false
+offset = Vector2(0, 500)
+billboard = 2
+texture = ExtResource("8_tcicl")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D14" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D14" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D15" type="Sprite3D" parent="." index="17" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.0552108, 0, 0, 0, 0.0482955, 0, 0, 0, 0.0717635, 0.39, -5.96046e-08, -0.385572)
+sorting_use_aabb_center = false
+offset = Vector2(0, 500)
+billboard = 2
+texture = ExtResource("8_tcicl")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D15" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D15" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D16" type="Sprite3D" parent="." index="18" node_paths=PackedStringArray("spawn_locations", "sprites")]
+transform = Transform3D(0.0552108, 0, 0, 0, 0.0482955, 0, 0, 0, 0.0717635, 0.26176, -2.98023e-08, 0.217714)
+sorting_use_aabb_center = false
+offset = Vector2(0, 500)
+billboard = 2
+texture = ExtResource("8_tcicl")
+script = ExtResource("5_k2wiq")
+chance_over = 1
+chance = 5
+spawn_locations = [NodePath("spawn_position_1"), NodePath("spawn_position_2")]
+sprites = [NodePath(".")]
+
+[node name="spawn_position_1" type="Node3D" parent="Sprite3D16" index="0"]
+
+[node name="spawn_position_2" type="Node3D" parent="Sprite3D16" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
+
+[node name="Sprite3D3" parent="." index="19"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372105, 0.0866082, -0.286269)
+visible = false
+
+[node name="Sprite3D4" parent="." index="20"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
+visible = false
