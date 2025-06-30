@@ -6,7 +6,6 @@ func _ready():
 	Events.connect("final", fadeaway)
 
 
-
 func fade():
 	var tween = create_tween()
 	tween.tween_property(
