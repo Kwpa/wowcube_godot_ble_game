@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://3v6ungv70iey"]
+
+[ext_resource type="PackedScene" uid="uid://4ns7brd58dmo" path="res://Game/dungeon_map_cells/graveyard_tile_4.tscn" id="1_pubhb"]
+[ext_resource type="PackedScene" uid="uid://15ta3gomi412" path="res://Scenes/fragment.tscn" id="2_vj5i3"]
+[ext_resource type="Texture2D" uid="uid://drbn37vr1xx0f" path="res://Textures/mushroom_tall.png" id="3_6ry0g"]
+
+[node name="graveyard_tile_4C" instance=ExtResource("1_pubhb")]
+has_fragment = true
+speaker = "skeletree4"
+
+[node name="fragment" parent="." index="0" instance=ExtResource("2_vj5i3")]
+
+[node name="shake_component" parent="." index="1" node_paths=PackedStringArray("all_shaking_elements")]
+all_shaking_elements = [null, null, null, null, null, null, null, null, NodePath("../Sprite3D10")]
+
+[node name="skeletree" parent="." index="14"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.160727, 0, -0.144724)
+
+[node name="Sprite3D10" parent="." index="15"]
+visible = false
+script = null
+
+[node name="Sprite3D12" parent="." index="16"]
+transform = Transform3D(0.086685, 0, 0, 0, 0.0758273, 0, 0, 0, 0.112674, 0.242691, -5.96046e-08, 0.0732865)
+offset = Vector2(0, 326)
+texture = ExtResource("3_6ry0g")
+script = null
+
+[node name="Sprite3D13" parent="." index="17"]
+visible = false
+script = null
+
+[node name="Sprite3D14" parent="." index="18"]
+visible = false
+script = null
+
+[node name="Sprite3D15" parent="." index="19"]
+visible = false
+script = null
+
+[node name="Sprite3D16" parent="." index="20"]
+visible = false
+script = null

@@ -10,7 +10,7 @@ extends CharacterBody3D
 @export var warp_strength : float = 0.1
 
 @onready var front_hover_pos = $front_hover_pos
-
+var current_speakers = []
 
 var is_rotating := false
 var is_moving := false
@@ -22,14 +22,32 @@ const SPEED = 100
 var current_tile : Node3D
 var adjacent_tiles : Array[Node3D]
 var world_ref
+var finalb : bool = false
 
 
 func _ready():
 	Events.connect("twist", twist_input)
 	Events.connect("tap", tap_input)
+	Events.connect("all_frags_collected", teleport_event)
+	Events.connect("final", final)
+	
 	world_ref = owner
 	await get_tree().create_timer(1).timeout
 	current_tile = world_ref.cells[[0,0]]
+
+
+func final():
+	finalb = true
+
+
+
+func teleport_event():
+	await get_tree().create_timer(1).timeout
+	self.global_position = Vector3(4.0,0.35,2.0)
+	self.rotate_and_set_direction(-90)
+	
+	set_new_tile([4,2])
+	
 
 
 func collision_check(direction):
@@ -47,6 +65,23 @@ func move():
 		#global_transform.origin.z += direction.z
 
 
+func set_new_tile(arr : Array):
+	var key1 = [arr[0],arr[1]]
+	current_tile = world_ref.cells[key1] 
+	var current_tile_id = current_tile.tile_id
+	
+	adjacent_tiles.clear()
+	print("****** " + str(current_tile.tile_id))
+	var adj_cells = world_ref.get_adjacent_cells(current_tile.tile_id)
+	var cells = world_ref.cells
+	if adj_cells != []:
+		for cell_id in adj_cells:
+			var key = [cell_id[0],cell_id[1]] 
+			adjacent_tiles.append(world_ref.cells[key])
+	
+	check_for_fragments()
+	check_for_speaker()
+
 func step_to_new_tile(direction):
 	var current_tile_id = current_tile.tile_id
 	var new_id = [current_tile_id[0]+int(direction.x), current_tile_id[1]+int(direction.z)]
@@ -63,14 +98,42 @@ func step_to_new_tile(direction):
 			adjacent_tiles.append(world_ref.cells[key])
 	
 	check_for_fragments()
+	check_for_speaker()
 
 func check_for_fragments():
 	if current_tile.has_fragment:
-		Events.emit_signal("send_msg_to_cube","fragment_on_tile")
+		Events.emit_signal("send_msg_to_cube","fragment_on_tile",1)
 	else:
+		var b = false
 		for adj_tile in adjacent_tiles:
 			if adj_tile.has_fragment:
-				Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile")
+				b = true 
+		if b:
+			Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",1)
+		else:
+			Events.emit_signal("send_msg_to_cube","fragment_on_nearby_tile",0)
+			Events.emit_signal("send_msg_to_cube","fragment_on_tile",0)
+	
+
+func check_for_speaker():
+	for speaker in current_speakers:
+		Events.emit_signal("deactivate_speaker", speaker)
+	
+	current_speakers.clear()
+	if current_tile.speaker != "":
+		Events.emit_signal("activate_speaker", current_tile.speaker)
+		current_speakers.append(current_tile.speaker)
+
+	for cell in adjacent_tiles:
+		if cell.speaker != null:
+			Events.emit_signal("activate_nearby_speaker", cell.speaker)
+			if current_speakers.has(cell.speaker) == false:
+				current_speakers.append(cell.speaker)
+	
+	
+
+
+	
 
 func _input(event):
 	if is_rotating:
@@ -93,7 +156,10 @@ func _input(event):
 		Events.emit_signal("tap", 2)
 
 
+
 func twist_input(scr : int, dir : int):
+	if finalb:
+		return
 	var array = [scr,dir]
 	match array:
 		[1,0]:
@@ -111,10 +177,13 @@ func twist_input(scr : int, dir : int):
 
 
 func tap_input(count : int):
+	if finalb: 
+		return
 	if count == 2:
 		Events.emit_signal("shake_tile_elements", current_tile.tile_id, direction)
 		warp_camera()
-	
+
+
 func warp_camera():
 	var camera : Camera3D = get_child(0)
 	var ori_fov = camera.fov

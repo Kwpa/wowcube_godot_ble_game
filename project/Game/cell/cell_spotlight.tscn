@@ -1,7 +1,8 @@
-[gd_scene load_steps=17 format=3 uid="uid://7fqv8k5bo47u"]
+[gd_scene load_steps=18 format=3 uid="uid://7fqv8k5bo47u"]
 
 [ext_resource type="Script" uid="uid://cykl8dsfj3kyf" path="res://Game/cell/cell.gd" id="1_tr5d5"]
 [ext_resource type="Material" uid="uid://drxu88g34gafy" path="res://Game/cell/cell.tres" id="2_l4xv5"]
+[ext_resource type="Texture2D" uid="uid://cgdaijam17aqs" path="res://Textures/Symbol.png" id="3_41kyx"]
 [ext_resource type="Texture2D" uid="uid://cb0j4osmulv2y" path="res://Textures/spotlight.png" id="3_l4xv5"]
 [ext_resource type="Texture2D" uid="uid://c2ti4v80n1s06" path="res://katie_work/rocks/ROCK_2_MED.png" id="4_twloj"]
 [ext_resource type="Texture2D" uid="uid://tyowpqokciaf" path="res://katie_work/rocks/ROCK_1_SMALL.png" id="5_kgrah"]
@@ -43,6 +44,11 @@ data = PackedVector3Array(0, -0.5, -0.5, 0, -0.5, 0.5, 0, 0.5, -0.5, 0, -0.5, 0.
 script = ExtResource("1_tr5d5")
 
 [node name="moon_phase_component" parent="." instance=ExtResource("7_kgrah")]
+
+[node name="phase_change" type="Sprite3D" parent="."]
+transform = Transform3D(0.205288, 0, 0, 0, -8.97342e-09, 0.205288, 0, -0.205288, -8.97342e-09, 0, 0.0076071, 0)
+visible = false
+texture = ExtResource("3_41kyx")
 
 [node name="Bottom" type="MeshInstance3D" parent="."]
 visible = false

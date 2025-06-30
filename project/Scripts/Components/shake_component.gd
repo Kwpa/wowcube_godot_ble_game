@@ -4,6 +4,7 @@ extends Node3D
 @export var all_shaking_elements : Array[Node3D]
 @export var shake_strength : float = 2
 @export var fragment : Node3D
+@onready var sounds : AudioStreamPlayer3D = $sounds
 
 func _ready():
 	Events.connect("shake_tile_elements", shake)
@@ -47,7 +48,8 @@ func shake(tile_id : Array, direction : Vector3i):
 					func (progress):
 					var curve_progress := slide_curve.sample(progress)
 					item.position = pos+Vector3(shake_strength*curve_progress,0,0), 0.0, 1.0,2)
-		
+		if list.size() != 0:
+			sounds.play()
 		await get_tree().create_timer(1.3).timeout
 		
 		# is there a fragment??

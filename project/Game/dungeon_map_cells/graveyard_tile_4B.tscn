@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=3 uid="uid://douclym23q3va"]
+
+[ext_resource type="PackedScene" uid="uid://4ns7brd58dmo" path="res://Game/dungeon_map_cells/graveyard_tile_4.tscn" id="1_auvmm"]
+
+[node name="graveyard_tile_4B" instance=ExtResource("1_auvmm")]
+
+[node name="shake_component" parent="." index="0" node_paths=PackedStringArray("all_shaking_elements")]
+all_shaking_elements = [null, null, null, null, null, null, null, null, NodePath("../Sprite3D10")]
+
+[node name="moon_phase_component" parent="." index="1" node_paths=PackedStringArray("col_full_moon_phase_list")]
+col_full_moon_phase_list = [NodePath("../East2/StaticBody3D/CollisionShape3D")]
+
+[node name="phase_change" parent="." index="2"]
+visible = true
+
+[node name="East2" parent="." index="6"]
+transform = Transform3D(-1, 0, -4.10039e-07, 0, 1, 0, 8.74228e-08, 0, -4.6903, 0.5, 0.394685, 0)
+
+[node name="East" parent="." index="7"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.5, 0.496243, 0)
+visible = false
+
+[node name="CollisionShape3D" parent="East/StaticBody3D" index="0"]
+disabled = true
+
+[node name="skeletree" parent="." index="13"]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.299767, 0, -0.279336)
+speaker_id = "skeletree2"
+
+[node name="Sprite3D10" parent="." index="14"]
+visible = false
+script = null
+
+[node name="Sprite3D12" parent="." index="15"]
+visible = false
+script = null
+
+[node name="Sprite3D13" parent="." index="16"]
+visible = false
+script = null
+
+[node name="Sprite3D14" parent="." index="17"]
+visible = false
+script = null
+
+[node name="Sprite3D15" parent="." index="18"]
+visible = false
+script = null
+
+[node name="Sprite3D16" parent="." index="19"]
+visible = false
+script = null

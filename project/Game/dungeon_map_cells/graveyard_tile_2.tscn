@@ -13,7 +13,7 @@
 [node name="shake_component" parent="." index="0" node_paths=PackedStringArray("all_shaking_elements") instance=ExtResource("2_idrin")]
 all_shaking_elements = [NodePath("../West/Sprite3D10"), NodePath("../East/Sprite3D12"), NodePath("../North/Sprite3D13"), NodePath("../South/Sprite3D11"), null, NodePath("../Sprite3D6"), NodePath("../Sprite3D7"), NodePath("../Sprite3D8"), NodePath("../Sprite3D10"), NodePath("../Sprite3D10"), NodePath("../Sprite3D8"), NodePath("../Sprite3D7"), NodePath("../Sprite3D6"), NodePath("../Sprite3D5-1"), NodePath("../South/Sprite3D11"), NodePath("../North/Sprite3D13"), NodePath("../East/Sprite3D12"), NodePath("../West/Sprite3D10")]
 
-[node name="West" parent="." index="3"]
+[node name="West" parent="." index="4"]
 visible = true
 layers = 0
 
@@ -23,8 +23,10 @@ sorting_use_aabb_center = false
 offset = Vector2(0, 965)
 billboard = 2
 texture = ExtResource("3_k3x7x")
+region_enabled = true
+region_rect = Rect2(6.96729, 18.198, 1030.42, 1905.17)
 
-[node name="East" parent="." index="4"]
+[node name="East" parent="." index="5"]
 visible = true
 layers = 0
 
@@ -34,8 +36,10 @@ sorting_use_aabb_center = false
 offset = Vector2(0, 965)
 billboard = 2
 texture = ExtResource("3_k3x7x")
+region_enabled = true
+region_rect = Rect2(6.96729, 18.198, 1030.42, 1905.17)
 
-[node name="North" parent="." index="5"]
+[node name="North" parent="." index="6"]
 visible = true
 layers = 0
 
@@ -46,8 +50,10 @@ offset = Vector2(0, 965)
 flip_h = true
 billboard = 2
 texture = ExtResource("3_k3x7x")
+region_enabled = true
+region_rect = Rect2(6.96729, 18.198, 1030.42, 1905.17)
 
-[node name="South" parent="." index="7"]
+[node name="South" parent="." index="8"]
 visible = true
 layers = 0
 
@@ -58,12 +64,11 @@ offset = Vector2(0, 965)
 flip_h = true
 billboard = 2
 texture = ExtResource("4_slebk")
+region_enabled = true
+region_rect = Rect2(6.96729, 18.198, 1030.42, 1905.17)
 
-[node name="Sprite3D" parent="." index="8"]
+[node name="Sprite3D" parent="." index="9"]
 modulate = Color(0.982525, 0.284277, 0.434811, 1)
-
-[node name="Sprite3D2" parent="." index="10"]
-visible = false
 
 [node name="Sprite3D6" type="Sprite3D" parent="." index="11" node_paths=PackedStringArray("spawn_locations", "sprites")]
 transform = Transform3D(0.0415246, 0, 0, 0, 0.0587266, 0, 0, 0, 0.0380757, -0.391, -0.0026837, -0.412)
@@ -133,10 +138,13 @@ sprites = [NodePath(".")]
 [node name="spawn_position_2" type="Node3D" parent="Sprite3D10" index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.84696, 0, -3.57108)
 
-[node name="Sprite3D3" parent="." index="15"]
+[node name="Sprite3D2" parent="." index="15"]
+visible = false
+
+[node name="Sprite3D3" parent="." index="16"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -0.372105, 0.0866082, -0.286269)
 visible = false
 
-[node name="Sprite3D4" parent="." index="16"]
+[node name="Sprite3D4" parent="." index="17"]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0.00136459, 0.28969, 0.16411)
 visible = false

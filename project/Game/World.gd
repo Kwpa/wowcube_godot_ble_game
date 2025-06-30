@@ -13,6 +13,8 @@ const Cell9 = preload("res://Game/dungeon_map_cells/graveyard_tile_1.tscn")
 const Cell10 = preload("res://Game/dungeon_map_cells/graveyard_tile_2.tscn")
 const Cell11 = preload("res://Game/dungeon_map_cells/graveyard_tile_3.tscn")
 const Cell12 = preload("res://Game/dungeon_map_cells/graveyard_tile_4.tscn")
+const Cell13 = preload("res://Game/dungeon_map_cells/graveyard_tile_4B.tscn")
+const Cell14 = preload("res://Game/dungeon_map_cells/graveyard_tile_4C.tscn")
 
 @export var Map: PackedScene
 
@@ -36,6 +38,9 @@ func _ready():
 	var used_tiles_10 = tile_map.get_used_cells_by_id(-1,Vector2i(1,2))
 	var used_tiles_11 = tile_map.get_used_cells_by_id(-1,Vector2i(2,2))
 	var used_tiles_12 = tile_map.get_used_cells_by_id(-1,Vector2i(3,2))
+	var used_tiles_13 = tile_map.get_used_cells_by_id(-1,Vector2i(3,3))
+	var used_tiles_14 = tile_map.get_used_cells_by_id(-1,Vector2i(3,4))
+
 	var used_tiles = []
 	used_tiles.append_array(used_tiles_1)
 	used_tiles.append_array(used_tiles_2)
@@ -49,6 +54,9 @@ func _ready():
 	used_tiles.append_array(used_tiles_10)
 	used_tiles.append_array(used_tiles_11)
 	used_tiles.append_array(used_tiles_12)
+	used_tiles.append_array(used_tiles_13)
+	used_tiles.append_array(used_tiles_14)
+
 	
 	map.free()
 	
@@ -64,6 +72,8 @@ func _ready():
 	make_cells(used_tiles_10,Cell10)
 	make_cells(used_tiles_11,Cell11)
 	make_cells(used_tiles_12,Cell12)
+	make_cells(used_tiles_13,Cell13)
+	make_cells(used_tiles_14,Cell14)
 	
 	
 	

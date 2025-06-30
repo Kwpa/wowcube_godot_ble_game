@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqpjcrcf1pf4o"]
+[gd_scene load_steps=21 format=3 uid="uid://cqpjcrcf1pf4o"]
 
 [ext_resource type="Script" uid="uid://cr2litk42pcv5" path="res://Game/World.gd" id="1_16uyv"]
 [ext_resource type="PackedScene" uid="uid://b0ekxxogjmxvh" path="res://Game/player/player.tscn" id="1_a7fmb"]
@@ -13,6 +13,9 @@
 [ext_resource type="Script" uid="uid://boug2x4s52vc2" path="res://Scripts/sound.gd" id="11_0lo2d"]
 [ext_resource type="PackedScene" uid="uid://dxdjq4qwsl62a" path="res://Scenes/debug_ui.tscn" id="11_p22qx"]
 [ext_resource type="AudioStream" uid="uid://d1h3jb3qqg2jh" path="res://audio/Viking inspired rough minimal.mp3" id="11_qg4go"]
+[ext_resource type="Script" uid="uid://cfrngppqvo871" path="res://Scripts/fade_to_black.gd" id="14_qg4go"]
+[ext_resource type="Texture2D" uid="uid://do3pw8hcwn0sm" path="res://Textures/skull.png" id="15_ldlcr"]
+[ext_resource type="Texture2D" uid="uid://dam35ruf5ecwu" path="res://Textures/Crow.png" id="16_05kbl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8frc"]
 shading_mode = 0
@@ -100,6 +103,7 @@ script = ExtResource("11_0lo2d")
 
 [node name="stream" type="AudioStreamPlayer3D" parent="sound"]
 stream = ExtResource("11_qg4go")
+volume_db = -0.345
 autoplay = true
 
 [node name="Sprite3D4" type="Sprite3D" parent="."]
@@ -113,3 +117,100 @@ visible = false
 new_moon_phase_list = [NodePath("../Sprite3D4")]
 
 [node name="debug_ui" parent="." instance=ExtResource("11_p22qx")]
+
+[node name="fade_to_black" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+script = ExtResource("14_qg4go")
+
+[node name="Label" type="Label" parent="fade_to_black"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -208.5
+offset_top = -108.0
+offset_right = 208.5
+offset_bottom = 108.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 23
+text = "So that's what their name was.
+Such a collection, pieces of heart
+and mind and body, lost on a breeze
+but now safely back in the earth.
+We've got more to find! Let's go...."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="fade_to_black/Label"]
+layout_mode = 0
+offset_left = -59.5
+offset_top = -11.0
+offset_right = 23.5
+offset_bottom = 62.0
+rotation = -0.322052
+texture = ExtResource("15_ldlcr")
+expand_mode = 1
+
+[node name="Control" type="Control" parent="fade_to_black"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="fade_to_black/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 30
+
+[node name="Button" type="Button" parent="fade_to_black/Control/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "PLAY WITH WOWCUBE:
+[PRESS HERE FIRST, THEN 
+LOAD CUBE APP]"
+
+[node name="Button2" type="Button" parent="fade_to_black/Control/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "PLAY WITH KEYBOARD
+[LEFT UP RIGHT DOWN TO MOVE]
+[SHIFT TO POWER TAP]
+[Q TO CHANGE MOON PHASE]"
+
+[node name="Button" type="Button" parent="."]
+visible = false
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 150.0
+offset_bottom = 71.0
+text = "Reconnect
+Cube"
+icon = ExtResource("16_05kbl")
+expand_icon = true
+
+[connection signal="pressed" from="fade_to_black/Control/VBoxContainer/Button" to="fade_to_black" method="_on_button_pressed"]
+[connection signal="pressed" from="fade_to_black/Control/VBoxContainer/Button2" to="fade_to_black" method="_on_button_2_pressed"]
+[connection signal="pressed" from="Button" to="io_cube" method="_on_button_pressed"]

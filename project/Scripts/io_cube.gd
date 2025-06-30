@@ -36,8 +36,12 @@ func device_detected(device:WOWDevice):
 
 
 func _ready():
-	if ignore_wowcube: return
 	Events.connect("send_msg_to_cube",write_to_device)
+	Events.connect("select_mode",custom_init)
+
+func custom_init(b:bool):
+	ignore_wowcube = b
+	if ignore_wowcube: return
 	await get_tree().process_frame
 	wowcube = WOWCube.new()
 	wowcube.device_detected.connect(device_detected)
@@ -129,3 +133,8 @@ func emit(data):
 func emit_connected():
 	write_to_device("connected",1)
 	Events.emit_signal("app_connected", "auto")
+
+
+func _on_button_pressed() -> void:
+	custom_init(false)
+	$"../Button".visible=false

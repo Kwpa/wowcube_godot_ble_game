@@ -21,7 +21,7 @@ func reveal_frag(id : int):
 	
 func appear_from_hiding():
 	fragment_sprite.visible = true
-	fragment_sprite.get_child(fragment_id).visible = true
+	fragment_sprite.get_child(fragment_id-1).visible = true
 	
 	var start_global = fragment_sprite.global_position
 	
@@ -33,11 +33,13 @@ func appear_from_hiding():
 		var curve_progress := slide_curve.sample(progress)
 		fragment_sprite.global_position = lerp(start_global, final_pos, curve_progress), 0.0, 1.0, travel_time)
 	await tween.finished
-	fragment_sprite.get_child(fragment_id).get_child(1).visible = true
-	fragment_sprite.get_child(fragment_id).get_child(1).emitting = true
+	fragment_sprite.get_child(fragment_id-1).get_child(1).visible = true
+	fragment_sprite.get_child(fragment_id-1).get_child(1).emitting = true
 	await get_tree().create_timer(1).timeout
 	fragment_sprite.visible = false 
 	Events.emit_signal("fragment_collected", fragment_id) 
 	
 	Global.collect_fragment(fragment_id)
+	if Global.get_total_fragments_collected() == 4:
+		Events.emit_signal("all_frags_collected")
 	
